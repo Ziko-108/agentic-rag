@@ -1,0 +1,19 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# node / next.js
+node_modules/
+.next/
+
+# editors / os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

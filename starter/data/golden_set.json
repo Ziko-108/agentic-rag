@@ -1,0 +1,405 @@
+[
+  {
+    "id": "q01",
+    "question": "For HCA Healthcare, Inc., what was the value of Number of healthcare professionals on staff at the end of the period listed in annual report? If data is not available, return 'N/A'.",
+    "kind": "number",
+    "answerable": true,
+    "answer": "294000",
+    "documents": [
+      "HCA Healthcare, Inc..pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 2
+        },
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 3
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q02",
+    "question": "According to the annual report, what is the Cash flow from operations (in USD) for Sonic Automotive, Inc. (within the last period or at the end of the last period)? If data is not available, return 'N/A'.",
+    "kind": "number",
+    "answerable": true,
+    "answer": "406100000",
+    "documents": [
+      "Sonic Automotive, Inc..pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 71
+        },
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 92
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q03",
+    "question": "For Albany International Corp., what was the value of R&D spending on advanced programs at the end of the period listed in annual report? If data is not available, return 'N/A'.",
+    "kind": "number",
+    "answerable": true,
+    "answer": "31400000",
+    "documents": [
+      "Albany International Corp..pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q04",
+    "question": "For Albany International Corp., what was the value of Year-end patent portfolio (aerospace tech) at the end of the period listed in annual report? If data is not available, return 'N/A'.",
+    "kind": "number",
+    "answerable": true,
+    "answer": "2300",
+    "documents": [
+      "Albany International Corp..pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q05",
+    "question": "For Origin Bancorp, Inc., what was the value of Total assets on balance sheet at year-end at the end of the period listed in annual report? If data is not available, return 'N/A'.",
+    "kind": "number",
+    "answerable": true,
+    "answer": "9686067000",
+    "documents": [
+      "Origin Bancorp, Inc..pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 6
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 191
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q06",
+    "question": "What was the value of Total power generation capacity (GW) of RWE AG at the end of the period listed in annual report? If data is not available, return 'N/A'.",
+    "kind": "number",
+    "answerable": true,
+    "answer": "39.3",
+    "documents": [
+      "RWE AG.pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "RWE AG.pdf",
+          "page": 47
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q07",
+    "question": "Which leadership positions changed at Datalogic in the reporting period? If data is not available, return 'N/A'. Give me the title of the position.",
+    "kind": "names",
+    "answerable": true,
+    "answer": [
+      "Director"
+    ],
+    "documents": [
+      "Datalogic.pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Datalogic.pdf",
+          "page": 68
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q08",
+    "question": "Which leadership positions changed at Origin Bancorp, Inc. in the reporting period? If data is not available, return 'N/A'. Give me the title of the position.",
+    "kind": "names",
+    "answerable": true,
+    "answer": [
+      "Chief Legal Counsel",
+      "Chief Financial Officer"
+    ],
+    "documents": [
+      "Origin Bancorp, Inc..pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 4
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q09",
+    "question": "Which leadership positions changed at Westwater Resources, Inc. in the reporting period? If data is not available, return 'N/A'. Give me the title of the position.",
+    "kind": "names",
+    "answerable": true,
+    "answer": [
+      "President and Chief Executive Officer"
+    ],
+    "documents": [
+      "Westwater Resources, Inc..pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 62
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q10",
+    "question": "Which of the companies had the lowest net income in EUR at the end of the period listed in annual report: \"Atreca, Inc.\", \"INMUNE BIO INC.\", \"Datalogic\", \"NuCana plc\", \"RWE AG\"? If data for the company is not available, exclude it from the comparison. If only one company is left, return this company.",
+    "kind": "name",
+    "answerable": true,
+    "answer": "Datalogic",
+    "documents": [
+      "Atreca, Inc..pdf",
+      "Datalogic.pdf",
+      "INMUNE BIO INC..pdf",
+      "NuCana plc.pdf",
+      "RWE AG.pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Atreca, Inc..pdf",
+          "page": 74
+        },
+        {
+          "document": "Atreca, Inc..pdf",
+          "page": 84
+        },
+        {
+          "document": "Atreca, Inc..pdf",
+          "page": 85
+        },
+        {
+          "document": "Atreca, Inc..pdf",
+          "page": 86
+        }
+      ],
+      [
+        {
+          "document": "INMUNE BIO INC..pdf",
+          "page": 50
+        },
+        {
+          "document": "INMUNE BIO INC..pdf",
+          "page": 46
+        },
+        {
+          "document": "INMUNE BIO INC..pdf",
+          "page": 47
+        },
+        {
+          "document": "INMUNE BIO INC..pdf",
+          "page": 51
+        },
+        {
+          "document": "INMUNE BIO INC..pdf",
+          "page": 43
+        }
+      ],
+      [
+        {
+          "document": "Datalogic.pdf",
+          "page": 41
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 44
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 75
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 76
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 59
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 80
+        }
+      ],
+      [
+        {
+          "document": "NuCana plc.pdf",
+          "page": 168
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 170
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 108
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 182
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 7
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 106
+        }
+      ],
+      [
+        {
+          "document": "RWE AG.pdf",
+          "page": 4
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 54
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 55
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 120
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 284
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q11",
+    "question": "Did HCA Healthcare, Inc. announce any changes to its dividend policy in the annual report? If there is no mention, return False.",
+    "kind": "boolean",
+    "answerable": true,
+    "answer": "False",
+    "documents": [
+      "HCA Healthcare, Inc..pdf"
+    ],
+    "evidence": []
+  },
+  {
+    "id": "q12",
+    "question": "Did Brave Bison Group plc mention any mergers or acquisitions in the annual report? If there is no mention, return False.",
+    "kind": "boolean",
+    "answerable": true,
+    "answer": "True",
+    "documents": [
+      "Brave Bison Group plc.pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 6
+        },
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 7
+        },
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 8
+        },
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 61
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q13",
+    "question": "Did Seiko Epson Corporation announce any changes to its dividend policy in the annual report? If there is no mention, return False.",
+    "kind": "boolean",
+    "answerable": true,
+    "answer": "False",
+    "documents": [
+      "Seiko Epson Corporation.pdf"
+    ],
+    "evidence": [
+      [
+        {
+          "document": "Seiko Epson Corporation.pdf",
+          "page": 67
+        }
+      ]
+    ]
+  },
+  {
+    "id": "q14",
+    "question": "What was the Gross margin (%) for Armadale Capital Plc according to the annual report (within the last period or at the end of the last period)? If data is not available, return 'N/A'.",
+    "kind": "number",
+    "answerable": false,
+    "answer": null,
+    "documents": [
+      "Armadale Capital Plc.pdf"
+    ],
+    "evidence": []
+  },
+  {
+    "id": "q15",
+    "question": "What was the value of Number of fulfillment centers at year-end of 1-800-FLOWERS.COM, INC. at the end of the period listed in annual report? If data is not available, return 'N/A'.",
+    "kind": "number",
+    "answerable": false,
+    "answer": null,
+    "documents": [
+      "1-800-FLOWERS.COM, INC..pdf"
+    ],
+    "evidence": []
+  },
+  {
+    "id": "q16",
+    "question": "What are the names of new products launched by Albany International Corp. as mentioned in the annual report?",
+    "kind": "names",
+    "answerable": false,
+    "answer": null,
+    "documents": [
+      "Albany International Corp..pdf"
+    ],
+    "evidence": []
+  }
+]
