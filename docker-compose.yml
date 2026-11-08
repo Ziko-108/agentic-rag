@@ -9,7 +9,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - "127.0.0.1:5432:5432"  # local only, for development
+      - "127.0.0.1:${DB_PORT:-5432}:5432"  # local only, for development
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
@@ -27,7 +27,7 @@ services:
     volumes:
       - ./starter/data/pdfs:/data/pdfs:ro
     ports:
-      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:${API_PORT:-8000}:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -39,7 +39,7 @@ services:
     environment:
       API_URL: http://api:8000
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:${UI_PORT:-3000}:3000"
     depends_on:
       - api  # not "healthy": the UI starts at once and shows "API down" until the API is up
     restart: unless-stopped
