@@ -28,6 +28,7 @@ export type ChatMessage = {
   usage?: Usage;
   error?: string;
   streaming?: boolean;
+  traceUrl?: string; // Langfuse trace of this turn, when tracing is on
 };
 
 export type Conversation = { id: number; title: string; mode: Mode; created_at: string };
@@ -135,7 +136,7 @@ export function uploadPdf(file: File, onProgress: (fraction: number) => void): P
 export type StreamEvent =
   | { type: "step"; step: number; tool: string; args: Record<string, unknown>; summary: string }
   | { type: "token"; text: string }
-  | { type: "done"; answer: string; citations: Citation[]; steps: Step[]; usage: Usage; conversation_id: number }
+  | { type: "done"; answer: string; citations: Citation[]; steps: Step[]; usage: Usage; conversation_id: number; trace_url?: string | null }
   | { type: "error"; message: string };
 
 // POST /chat/stream and call onEvent for each server-sent event.

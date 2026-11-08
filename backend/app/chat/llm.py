@@ -9,10 +9,12 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 
 from openai import OpenAI
 
 from app.config import get_settings
+from app.tracing import NOOP, Span
 
 log = logging.getLogger(__name__)
 
@@ -32,13 +34,16 @@ class Usage:
     usd: float = 0.0
     models: list[str] = field(default_factory=list)
 
-    def add(self, model: str, prompt: int, completion: int) -> None:
+    def add(self, model: str, prompt: int, completion: int) -> float:
+        """Count one call; returns its cost in USD."""
         inp, out = PRICES.get(model, (0.0, 0.0))
+        usd = (prompt * inp + completion * out) / 1e6
         self.prompt_tokens += prompt
         self.completion_tokens += completion
-        self.usd += (prompt * inp + completion * out) / 1e6
+        self.usd += usd
         if model not in self.models:
             self.models.append(model)
+        return usd
 
     def as_dict(self) -> dict:
         return {"prompt_tokens": self.prompt_tokens, "completion_tokens": self.completion_tokens,
@@ -52,28 +57,16 @@ def _clients():
         yield s.fallback_model, OpenAI(base_url=s.ollama_url, api_key="ollama", timeout=300, max_retries=0)
 
 
-def complete(messages: list[dict], usage: Usage, tools: list[dict] | None = None):
-    """One chat completion (the message), trying the fallback model on failure."""
-    error = None
-    for model, client in _clients():
-        try:
-            kwargs = {"tools": tools} if tools else {}
-            resp = client.chat.completions.create(model=model, messages=messages, temperature=0, **kwargs)
-            if resp.usage:
-                usage.add(model, resp.usage.prompt_tokens, resp.usage.completion_tokens)
-            return resp.choices[0].message
-        except Exception as e:  # try the next model
-            log.warning("LLM %s failed: %s", model, e)
-            error = e
-    raise RuntimeError(f"all language models failed: {error}")
-
-
-def stream(messages: list[dict], usage: Usage, tools: list[dict] | None = None):
+def stream(messages: list[dict], usage: Usage, tools: list[dict] | None = None, trace: Span = NOOP):
     """One completion, streamed. Yields ("text", piece) while the model writes,
-    then ("message", {"content": ..., "tool_calls": [...]}) once at the end."""
+    then ("message", {"content": ..., "tool_calls": [...]}) once at the end.
+    Each attempt is a "generation" in the trace, with its tokens and cost."""
     error = None
     for model, client in _clients():
         started = False
+        gen = trace.child("llm", as_type="generation", model=model, input=messages,
+                          model_parameters={"temperature": 0},
+                          metadata={"tools": [t["function"]["name"] for t in tools]} if tools else None)
         try:
             kwargs = {"tools": tools} if tools else {}
             chunks = client.chat.completions.create(
@@ -81,14 +74,17 @@ def stream(messages: list[dict], usage: Usage, tools: list[dict] | None = None):
                 stream_options={"include_usage": True}, **kwargs,
             )
             content, calls = [], {}  # tool calls arrive in pieces, keyed by index
+            tokens, cost, first_token = {}, 0.0, None
             for chunk in chunks:
                 if chunk.usage:
-                    usage.add(model, chunk.usage.prompt_tokens, chunk.usage.completion_tokens)
+                    cost = usage.add(model, chunk.usage.prompt_tokens, chunk.usage.completion_tokens)
+                    tokens = {"input": chunk.usage.prompt_tokens, "output": chunk.usage.completion_tokens}
                 if not chunk.choices:
                     continue
                 delta = chunk.choices[0].delta
                 if delta.content:
                     started = True
+                    first_token = first_token or datetime.now(timezone.utc)
                     content.append(delta.content)
                     yield "text", delta.content
                 for tc in delta.tool_calls or []:
@@ -97,9 +93,13 @@ def stream(messages: list[dict], usage: Usage, tools: list[dict] | None = None):
                     if tc.function:
                         call["name"] += tc.function.name or ""
                         call["arguments"] += tc.function.arguments or ""
-            yield "message", {"content": "".join(content), "tool_calls": [calls[i] for i in sorted(calls)]}
+            message = {"content": "".join(content), "tool_calls": [calls[i] for i in sorted(calls)]}
+            gen.end(output=message, usage_details=tokens, cost_details={"total": cost},
+                    completion_start_time=first_token)
+            yield "message", message
             return
         except Exception as e:
+            gen.end(level="ERROR", status_message=f"{type(e).__name__}: {e}")
             if started:  # half an answer already went out: don't mix in another model
                 raise
             log.warning("LLM %s failed: %s", model, e)

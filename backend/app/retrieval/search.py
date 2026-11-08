@@ -25,6 +25,7 @@ from sqlalchemy.orm import Session
 
 from app.config import get_settings
 from app.ingest.pipeline import embed
+from app.tracing import NOOP, Span
 
 CANDIDATES = 40  # per search method, before fusion
 RRF_K = 60  # the usual constant from the RRF paper
@@ -112,21 +113,31 @@ def search(
     documents: list[str] | None = None,
     use_reranker: bool | None = None,
     threshold: float | None = None,
+    trace: Span = NOOP,
 ) -> list[Hit]:
     s = get_settings()
     k = k or s.top_k
     use_reranker = s.use_reranker if use_reranker is None else use_reranker
     threshold = s.relevance_threshold if threshold is None else threshold
 
+    span = trace.child("retrieval", as_type="retriever", input={"query": query, "documents": documents},
+                       metadata={"top_k": k, "reranker": use_reranker, "threshold": threshold})
     vector = embed([query])[0]
-    fused = rrf([dense_ids(session, vector, documents), lexical_ids(session, query, documents)])
+    dense, lexical = dense_ids(session, vector, documents), lexical_ids(session, query, documents)
+    fused = rrf([dense, lexical])
     by_id = load_hits(session, [cid for cid, _ in fused], vector)
     hits = []
     for cid, score in fused:
         if by_id[cid].similarity >= threshold:  # too far from the question: not evidence
             by_id[cid].score = score
             hits.append(by_id[cid])
+    passed = len(hits)
     hits = hits[: s.rerank_candidates if use_reranker else k]
     if use_reranker:
         hits = rerank(query, hits)
-    return hits[:k]
+    hits = hits[:k]
+    span.end(output=[{"document": h.document, "page": h.page, "similarity": round(h.similarity, 3),
+                      "score": round(h.score, 4)} for h in hits],
+             metadata={"dense": len(dense), "lexical": len(lexical), "fused": len(fused),
+                       "above_threshold": passed, "returned": len(hits)})
+    return hits

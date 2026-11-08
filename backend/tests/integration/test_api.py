@@ -74,6 +74,8 @@ def api():
         "FALLBACK_MODEL": "fake-local",
         "USE_RERANKER": "false",  # the reranker is measured elsewhere; here it would only slow startup
         "SEED_DIR": "",
+        "LANGFUSE_PUBLIC_KEY": "",  # no traces from tests
+        "LANGFUSE_SECRET_KEY": "",
     }
     proc = subprocess.Popen([sys.executable, "-m", "uvicorn", "app.main:app", "--port", str(api_port)],
                             cwd=BACKEND, env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

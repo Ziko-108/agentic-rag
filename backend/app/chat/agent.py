@@ -31,6 +31,7 @@ from app.config import get_settings
 from app.db import Chunk, Document
 from app.retrieval.companies import detect_documents
 from app.retrieval.search import Hit, search
+from app.tracing import NOOP, Span
 
 MAX_STEPS = 6
 
@@ -113,7 +114,7 @@ class Tools:
         self.sources.extend(hits)
         return format_sources(hits, start=start)
 
-    def run(self, name: str, args: dict) -> tuple[str, str]:
+    def run(self, name: str, args: dict, span: Span = NOOP) -> tuple[str, str]:
         """(text for the model, short summary for the UI)."""
         if name == "search_reports":
             docs = None
@@ -121,7 +122,7 @@ class Tools:
                 docs = detect_documents(" ; ".join(args["companies"]), self.files)
                 if not docs:
                     return f"No report matches companies {args['companies']}. Use list_documents.", "no such company"
-            hits = search(self.session, args["query"], documents=docs)
+            hits = search(self.session, args["query"], documents=docs, trace=span)
             if not hits:
                 return "No relevant passages found.", "0 results"
             return self._add(hits), f"{len(hits)} results"
@@ -146,7 +147,7 @@ class Tools:
         return f"Unknown tool {name!r}.", "unknown tool"
 
 
-def run(session: Session, question: str, history: list[dict] | None = None):
+def run(session: Session, question: str, history: list[dict] | None = None, trace: Span = NOOP):
     budget = get_settings().max_usd_per_question
     usage, tools, steps, seen = Usage(), Tools(session), [], set()
     messages = [{"role": "system", "content": SYSTEM}, *(history or []), {"role": "user", "content": question}]
@@ -157,7 +158,7 @@ def run(session: Session, question: str, history: list[dict] | None = None):
         if last:  # out of steps or money: answer from what was found
             messages.append({"role": "user", "content": "Stop using tools and answer now from the sources above."})
         message = None
-        for kind, value in stream(messages, usage, tools=None if last else TOOLS):
+        for kind, value in stream(messages, usage, tools=None if last else TOOLS, trace=trace):
             if kind == "text":
                 yield {"type": "token", "text": value}
             else:
@@ -171,14 +172,17 @@ def run(session: Session, question: str, history: list[dict] | None = None):
             for c in calls]})
         for c in calls:
             key = (c["name"], c["arguments"].strip())
+            span = trace.child(c["name"], as_type="tool", input=c["arguments"], metadata={"step": step + 1})
             try:
                 args = json.loads(c["arguments"] or "{}")
                 if key in seen:
                     result, summary = "You already made this exact call; its result is above.", "repeated call skipped"
                 else:
-                    result, summary = tools.run(c["name"], args)
+                    result, summary = tools.run(c["name"], args, span)
             except Exception as e:  # a broken tool call is the model's to fix, not a crash
                 args, result, summary = {}, f"Tool error: {type(e).__name__}: {e}", "error"
+            span.end(output=result, metadata={"summary": summary},
+                     level="WARNING" if summary in ("error", "repeated call skipped") else "DEFAULT")
             seen.add(key)
             event = {"type": "step", "step": step + 1, "tool": c["name"], "args": args, "summary": summary}
             steps.append(event)

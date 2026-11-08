@@ -99,6 +99,14 @@ export function Message({ message, onOpen }: { message: ChatMessage; onOpen: (c:
       {message.usage && !message.streaming && (
         <div className="usage">
           ${message.usage.usd.toFixed(4)} · {(message.usage.prompt_tokens + message.usage.completion_tokens).toLocaleString()} tokens
+          {message.traceUrl && (
+            <>
+              {" · "}
+              <a href={message.traceUrl} target="_blank" rel="noreferrer">
+                View trace
+              </a>
+            </>
+          )}
         </div>
       )}
     </div>

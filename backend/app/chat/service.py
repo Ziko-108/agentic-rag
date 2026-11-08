@@ -8,6 +8,7 @@ from datetime import date
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app import tracing
 from app.chat import agent, single_pass
 from app.config import get_settings
 from app.db import Conversation, Message, engine
@@ -64,12 +65,20 @@ def turn(conversation_id: int, question: str, mode: str):
         conv = session.get(Conversation, conversation_id)
         past = history(conv, get_settings().history_tokens)
         runner = agent.run if mode == "agent" else single_pass.run
+        trace = tracing.start_trace("chat-turn", user_id=conv.user_id, session_id=str(conv.id),
+                                    input=question, metadata={"mode": mode, "history_messages": len(past)})
         done = None
-        for event in runner(session, question, past):
-            if event["type"] == "done":
-                done = event
-            else:
-                yield event
+        try:
+            for event in runner(session, question, past, trace=trace):
+                if event["type"] == "done":
+                    done = event
+                else:
+                    yield event
+        except Exception as e:
+            trace.end(level="ERROR", status_message=f"{type(e).__name__}: {e}")
+            raise
+        trace.end(output=done["answer"], metadata={"citations": done["citations"], "usage": done["usage"],
+                                                   "steps": len(done["steps"])})
         session.rollback()  # end the read-only search transaction before writing
         u = done["usage"]
         session.add_all([
@@ -79,4 +88,4 @@ def turn(conversation_id: int, question: str, mode: str):
                     completion_tokens=u["completion_tokens"], usd=u["usd"]),
         ])
         session.commit()
-        yield {**done, "conversation_id": conv.id}
+        yield {**done, "conversation_id": conv.id, "trace_url": trace.url()}

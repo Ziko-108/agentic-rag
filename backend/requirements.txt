@@ -12,3 +12,4 @@ pydantic-settings==2.16.0
 # the CPU or CUDA build; locally use `pip install torch --index-url ...`.
 sentence-transformers==6.2.0
 transformers==5.22.2
+langfuse==5.2.0

@@ -12,6 +12,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import func, select, text
 from sqlalchemy.orm import Session
 
+from app import tracing
 from app.chat import service
 from app.config import get_settings
 from app.db import Chunk, Conversation, Document, get_session, init_db
@@ -33,6 +34,7 @@ async def lifespan(app: FastAPI):
     if seed_dir := get_settings().seed_dir:  # in the background: the API is usable meanwhile
         threading.Thread(target=seed_folder, args=(seed_dir,), daemon=True).start()
     yield
+    tracing.flush()  # send the traces still in the buffer
 
 
 app = FastAPI(title="Agentic RAG", lifespan=lifespan)

@@ -690,3 +690,7 @@ h2 {
     padding-right: 16px;
   }
 }
+
+.usage a {
+  color: var(--accent);
+}

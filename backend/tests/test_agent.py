@@ -23,7 +23,7 @@ def scripted(replies):
     replies = iter(replies)
     seen_tools = []
 
-    def stream(messages, usage, tools=None):
+    def stream(messages, usage, tools=None, **_):
         seen_tools.append(tools is not None)
         reply = next(replies)
         if isinstance(reply, str):

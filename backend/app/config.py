@@ -33,6 +33,11 @@ class Settings(BaseSettings):
 
     seed_dir: str = ""  # PDFs ingested at startup if not in the database yet
 
+    # tracing: off unless both keys are set (see app/tracing.py)
+    langfuse_public_key: str = ""
+    langfuse_secret_key: str = ""
+    langfuse_base_url: str = "https://cloud.langfuse.com"
+
     @property
     def database_url(self) -> str:
         return (
