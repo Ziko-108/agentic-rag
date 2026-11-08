@@ -1,0 +1,15 @@
+# Optional: run the reranker on an NVIDIA GPU.
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up --build
+# Needs the NVIDIA driver and Docker Desktop with WSL2 (or nvidia-container-toolkit on Linux).
+services:
+  api:
+    build:
+      args:
+        TORCH_INDEX: https://download.pytorch.org/whl/cu128
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

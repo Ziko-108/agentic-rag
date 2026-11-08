@@ -37,13 +37,19 @@ def format_sources(hits: list[Hit], start: int = 1) -> str:
 
 
 def citations(answer: str, hits: list[Hit]) -> list[dict]:
-    """The sources the answer actually cites, in order of first use, one per page."""
-    out, seen = [], set()
+    """The sources the answer actually cites, in order of first use, one per page.
+    `tags` lists every [S#] in the answer that points to that page, so the UI
+    can link each tag in the text to its citation."""
+    out, by_page = [], {}
     for m in CITE.finditer(answer):
         i = int(m[1]) - 1
-        if 0 <= i < len(hits) and (hits[i].document, hits[i].page) not in seen:
-            h = hits[i]
-            seen.add((h.document, h.page))
-            out.append({"source": f"S{i + 1}", "document": h.document, "page": h.page,
-                        "section": h.section, "chunk_id": h.chunk_id})
+        if not 0 <= i < len(hits):
+            continue
+        h, tag = hits[i], f"S{i + 1}"
+        if (h.document, h.page) not in by_page:
+            by_page[(h.document, h.page)] = {"source": tag, "tags": [], "document": h.document, "page": h.page,
+                                             "section": h.section, "chunk_id": h.chunk_id}
+            out.append(by_page[(h.document, h.page)])
+        if tag not in by_page[(h.document, h.page)]["tags"]:
+            by_page[(h.document, h.page)]["tags"].append(tag)
     return out

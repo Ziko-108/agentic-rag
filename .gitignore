@@ -17,3 +17,7 @@ node_modules/
 .idea/
 .DS_Store
 Thumbs.db
+
+# next.js generated
+next-env.d.ts
+*.tsbuildinfo

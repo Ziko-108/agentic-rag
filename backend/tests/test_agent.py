@@ -95,3 +95,4 @@ def test_citations_ignore_unknown_tags_and_repeat_pages():
     hits = [Hit(1, "A.pdf", 3, None, ""), Hit(2, "A.pdf", 3, None, ""), Hit(3, "B.pdf", 9, None, "")]
     got = citations("x [S2] y [S1] z [S3] w [S9]", hits)
     assert [(c["document"], c["page"]) for c in got] == [("A.pdf", 3), ("B.pdf", 9)]
+    assert [c["tags"] for c in got] == [["S2", "S1"], ["S3"]]

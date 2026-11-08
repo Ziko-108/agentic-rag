@@ -16,5 +16,33 @@ services:
       timeout: 3s
       retries: 10
 
+  api:
+    # FastAPI backend: ingestion, retrieval, agent. Ingests ./starter/data/pdfs on first start.
+    build: ./backend
+    env_file: .env  # the OpenAI key arrives here at run time; it is not in the image
+    environment:
+      POSTGRES_HOST: db
+      SEED_DIR: /data/pdfs
+      OMP_NUM_THREADS: 4  # the CPU reranker may use 4 threads, not every core
+    volumes:
+      - ./starter/data/pdfs:/data/pdfs:ro
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  ui:
+    # Next.js chat UI; it forwards /api/* to the backend
+    build: ./ui
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - api  # not "healthy": the UI starts at once and shows "API down" until the API is up
+    restart: unless-stopped
+
 volumes:
   pgdata:
