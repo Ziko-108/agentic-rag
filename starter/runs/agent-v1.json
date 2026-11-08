@@ -1,0 +1,277 @@
+{
+  "label": "agent-v1",
+  "scorecard": {
+    "answer accuracy": 0.538,
+    "correct refusals on unanswerable": 1.0,
+    "evidence cited": 0.333,
+    "seconds per question": 5.266,
+    "usd for the whole set": 0.0258
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "kind": "number",
+      "answerable": true,
+      "expected": "294000",
+      "answer": "The number of healthcare professionals on staff at HCA Healthcare, Inc. at the end of the period (December 31, 2022) was approximately 294,000 employees, including healthcare professionals. Additionally, there were approximately 45,000 physicians on the medical staff. This data is from the 2022 annual report. \n\nTherefore, the value for the number of healthcare professionals on staff at the end of the period is approximately 294,000 employees (including healthcare professionals) and 45,000 physicians on medical staff as of December 31, 2022 [S1, S2].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 5.26,
+      "usd": 0.002194
+    },
+    {
+      "id": "q02",
+      "kind": "number",
+      "answerable": true,
+      "expected": "406100000",
+      "answer": "The Cash flow from operations (net cash provided by operating activities) for Sonic Automotive, Inc. for the year ended December 31, 2022, was approximately $406.1 million USD. This is the most recent period reported in the annual report. [S1][S4]",
+      "citations": [
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 71
+        },
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 92
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.34,
+      "usd": 0.002553
+    },
+    {
+      "id": "q03",
+      "kind": "number",
+      "answerable": true,
+      "expected": "31400000",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.39,
+      "usd": 0.000518
+    },
+    {
+      "id": "q04",
+      "kind": "number",
+      "answerable": true,
+      "expected": "2300",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.47,
+      "usd": 0.000521
+    },
+    {
+      "id": "q05",
+      "kind": "number",
+      "answerable": true,
+      "expected": "9686067000",
+      "answer": "The value of Total assets on the balance sheet for Origin Bancorp, Inc. at year-end December 31, 2022, was $9.69 billion. For the year-end December 31, 2021, total assets were $7.86 billion. This information is from the comparison of financial condition and the consolidated balance sheet data in the annual report [S1][S3][S7].",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 169
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 191
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 6
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.15,
+      "usd": 0.002815
+    },
+    {
+      "id": "q06",
+      "kind": "number",
+      "answerable": true,
+      "expected": "39.3",
+      "answer": "The total power generation capacity of RWE AG at the end of the period listed in the annual report (31 December 2022) was 39.3 GW. This figure excludes the capacity from Con Edison Clean Energy Businesses, which was acquired after the period on 1 March 2023. The generation capacity increased by 2.3 GW compared to 2021, driven by new wind and solar farms and other renewable energy projects [S1].",
+      "citations": [
+        {
+          "document": "RWE AG.pdf",
+          "page": 47
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.32,
+      "usd": 0.002942
+    },
+    {
+      "id": "q07",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Director"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 5.69,
+      "usd": 0.002392
+    },
+    {
+      "id": "q08",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Chief Legal Counsel",
+        "Chief Financial Officer"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports. The search did not return any information about leadership position changes at Origin Bancorp, Inc. in the reporting period.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.55,
+      "usd": 0.001341
+    },
+    {
+      "id": "q09",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "President and Chief Executive Officer"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.61,
+      "usd": 0.001304
+    },
+    {
+      "id": "q10",
+      "kind": "name",
+      "answerable": true,
+      "expected": "Datalogic",
+      "answer": "The companies with available net income data in EUR at the end of the period listed in their annual reports are:\n\n- Datalogic: Net income of \u20ac30,418,000 for the year ended 31 December 2022 [S2][S6].\n- RWE AG: Net income data not explicitly stated as net income but mentions net income totalled \u20ac2,096 million in a segment, not consolidated net income [S7].\n\nFor Atreca, Inc. and NuCana plc, no relevant net income data in EUR was found. For INMUNE BIO INC., only accumulated deficit in USD was mentioned, no net income in EUR.\n\nSince only Datalogic has clear net income in EUR available, it is the company with the lowest net income in EUR among those with data.\n\nAnswer: Datalogic had the lowest net income in EUR at the end of the period listed in the annual reports.",
+      "citations": [
+        {
+          "document": "Datalogic.pdf",
+          "page": 155
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 154
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 140
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 8.82,
+      "usd": 0.00205
+    },
+    {
+      "id": "q11",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "HCA Healthcare, Inc. did not announce any changes to its dividend policy in the annual report. The report states that the Board of Directors declared quarterly dividends during 2022 and a quarterly dividend in January 2023, but it also notes that the declaration, amount, and timing of dividends are subject to capital availability and Board determinations. There is no mention of a change to the dividend policy itself [S1].",
+      "citations": [
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 59
+        }
+      ],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 4.99,
+      "usd": 0.000828
+    },
+    {
+      "id": "q12",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "True",
+      "answer": "False",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.48,
+      "usd": 0.000488
+    },
+    {
+      "id": "q13",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "No, Seiko Epson Corporation did not announce any changes to its dividend policy in the annual report. The report describes the existing dividend policy, including a consolidated dividend payout ratio target of around 40%, payment of cash dividends twice a year, and an annual dividend of \u00a562 per share, but does not mention any changes to this policy [S1].",
+      "citations": [
+        {
+          "document": "Seiko Epson Corporation.pdf",
+          "page": 67
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.88,
+      "usd": 0.000976
+    },
+    {
+      "id": "q14",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 4.37,
+      "usd": 0.000515
+    },
+    {
+      "id": "q15",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 7.52,
+      "usd": 0.002747
+    },
+    {
+      "id": "q16",
+      "kind": "names",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 4.41,
+      "usd": 0.001653
+    }
+  ]
+}

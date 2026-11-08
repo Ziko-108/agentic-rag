@@ -1,0 +1,213 @@
+{
+  "questions_with_evidence": 12,
+  "results": [
+    {
+      "config": "dense, all docs",
+      "recall@5": 0.667,
+      "recall@8": 0.667,
+      "recall@12": 0.833,
+      "seconds": 1.2
+    },
+    {
+      "config": "lexical, all docs",
+      "recall@5": 0.167,
+      "recall@8": 0.167,
+      "recall@12": 0.25,
+      "seconds": 4.2
+    },
+    {
+      "config": "hybrid, all docs",
+      "recall@5": 0.75,
+      "recall@8": 0.75,
+      "recall@12": 0.75,
+      "seconds": 5.1
+    },
+    {
+      "config": "hybrid + company filter",
+      "recall@5": 0.583,
+      "recall@8": 0.75,
+      "recall@12": 0.833,
+      "seconds": 1.1
+    },
+    {
+      "config": "hybrid + filter + bge-base rerank",
+      "recall@5": 0.833,
+      "recall@8": 0.833,
+      "recall@12": 0.917,
+      "seconds": 87.2
+    },
+    {
+      "config": "hybrid + filter + minilm rerank",
+      "recall@5": 0.667,
+      "recall@8": 0.667,
+      "recall@12": 0.75,
+      "seconds": 19.4
+    }
+  ],
+  "top_reranker_scores": {
+    "bge-base": [
+      [
+        "q01",
+        true,
+        0.681
+      ],
+      [
+        "q02",
+        true,
+        0.972
+      ],
+      [
+        "q03",
+        true,
+        0.707
+      ],
+      [
+        "q04",
+        true,
+        0.941
+      ],
+      [
+        "q05",
+        true,
+        0.994
+      ],
+      [
+        "q06",
+        true,
+        0.971
+      ],
+      [
+        "q07",
+        true,
+        0.167
+      ],
+      [
+        "q08",
+        true,
+        0.921
+      ],
+      [
+        "q09",
+        true,
+        0.867
+      ],
+      [
+        "q10",
+        true,
+        0.279
+      ],
+      [
+        "q11",
+        true,
+        0.923
+      ],
+      [
+        "q12",
+        true,
+        0.807
+      ],
+      [
+        "q13",
+        true,
+        0.958
+      ],
+      [
+        "q14",
+        false,
+        0.414
+      ],
+      [
+        "q15",
+        false,
+        0.448
+      ],
+      [
+        "q16",
+        false,
+        0.976
+      ]
+    ],
+    "minilm": [
+      [
+        "q01",
+        true,
+        2.791
+      ],
+      [
+        "q02",
+        true,
+        3.175
+      ],
+      [
+        "q03",
+        true,
+        1.902
+      ],
+      [
+        "q04",
+        true,
+        2.724
+      ],
+      [
+        "q05",
+        true,
+        6.12
+      ],
+      [
+        "q06",
+        true,
+        3.145
+      ],
+      [
+        "q07",
+        true,
+        -0.84
+      ],
+      [
+        "q08",
+        true,
+        0.548
+      ],
+      [
+        "q09",
+        true,
+        2.334
+      ],
+      [
+        "q10",
+        true,
+        -2.062
+      ],
+      [
+        "q11",
+        true,
+        2.151
+      ],
+      [
+        "q12",
+        true,
+        3.278
+      ],
+      [
+        "q13",
+        true,
+        2.773
+      ],
+      [
+        "q14",
+        false,
+        1.593
+      ],
+      [
+        "q15",
+        false,
+        1.905
+      ],
+      [
+        "q16",
+        false,
+        3.2
+      ]
+    ]
+  }
+}
