@@ -1,0 +1,278 @@
+{
+  "label": "pipeline-v2-rerun",
+  "scorecard": {
+    "answer accuracy": 0.769,
+    "correct refusals on unanswerable": 1.0,
+    "evidence cited": 0.417,
+    "seconds per question": 4.423,
+    "usd for the whole set": 0.0326
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "kind": "number",
+      "answerable": true,
+      "expected": "294000",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 5.13,
+      "usd": 0.002255
+    },
+    {
+      "id": "q02",
+      "kind": "number",
+      "answerable": true,
+      "expected": "406100000",
+      "answer": "The net cash provided by operating activities (cash flow from operations) for Sonic Automotive, Inc. was approximately $406.1 million for the year ended December 31, 2022 [S1][S5].",
+      "citations": [
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 71
+        },
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 92
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.05,
+      "usd": 0.002297
+    },
+    {
+      "id": "q03",
+      "kind": "number",
+      "answerable": true,
+      "expected": "31400000",
+      "answer": "The value of company-funded research and development expenses for Albany International Corp. was $31.4 million in 2022. This includes $15.4 million in the Albany Engineered Composites segment, which involves advanced materials-based engineered components for aerospace applications. This is the most relevant R&D spending on advanced programs reported in the annual report for the period ended December 31, 2022 [S3][S12].",
+      "citations": [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        },
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 39
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.57,
+      "usd": 0.001792
+    },
+    {
+      "id": "q04",
+      "kind": "number",
+      "answerable": true,
+      "expected": "2300",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.21,
+      "usd": 0.001941
+    },
+    {
+      "id": "q05",
+      "kind": "number",
+      "answerable": true,
+      "expected": "9686067000",
+      "answer": "The value of Total assets on the balance sheet for Origin Bancorp, Inc. at year-end December 31, 2022, was $9,686,067 thousand ($9.686 billion) [S4].",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 191
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 3.99,
+      "usd": 0.002091
+    },
+    {
+      "id": "q06",
+      "kind": "number",
+      "answerable": true,
+      "expected": "39.3",
+      "answer": "The total power generation capacity of RWE AG as of 31 December 2022 was 39.3 GW [S1].",
+      "citations": [
+        {
+          "document": "RWE AG.pdf",
+          "page": 47
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.0,
+      "usd": 0.002354
+    },
+    {
+      "id": "q07",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Director"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 3.97,
+      "usd": 0.00161
+    },
+    {
+      "id": "q08",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Chief Legal Counsel",
+        "Chief Financial Officer"
+      ],
+      "answer": "The leadership position change at Origin Bancorp, Inc. during the reporting period was Stephen Brolly transitioning from Chief Financial Officer to Chief Accounting Officer effective August 8, 2022 [S7].",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 59
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 3.95,
+      "usd": 0.00189
+    },
+    {
+      "id": "q09",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "President and Chief Executive Officer"
+      ],
+      "answer": "The leadership positions that changed at Westwater Resources, Inc. in the reporting period include:\n\n- President and Chief Executive Officer: Frank Bakker was appointed effective January 16, 2023.\n- Senior Vice President \u2013 Finance and Chief Financial Officer: Steven M. Cates was appointed effective January 16, 2023.\n- Chief Administrative Officer, General Counsel and Corporate Secretary: John W. Lawrence assumed this role effective January 16, 2023, having previously been General Counsel and Corporate Secretary [S1, S3, S4].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.2,
+      "usd": 0.001907
+    },
+    {
+      "id": "q10",
+      "kind": "name",
+      "answerable": true,
+      "expected": "Datalogic",
+      "answer": "The net income (or loss) in EUR for the companies at the end of the period listed are:\n\n- Atreca, Inc.: Net loss of $(97,157) thousand USD in 2022 [S1]. No EUR equivalent provided, so exclude.\n- INMUNE BIO INC.: Data not available in EUR, only USD figures and no net income stated [S9-S12]. Exclude.\n- Datalogic: Net profit of \u20ac30,126 thousand in 2022 [S8].\n- NuCana plc: Loss for the year of \u00a332,021 thousand in 2022 [S13, S15]. No EUR equivalent provided, exclude.\n- RWE AG: Net income attributable to shareholders of \u20ac2,717 million in 2022 [S17].\n\nAmong the companies with EUR data, Datalogic had a net profit of \u20ac30,126 thousand and RWE AG had a net income of \u20ac2,717 million (\u20ac2,717,000 thousand). NuCana plc's loss is in GBP, so excluded.\n\nTherefore, Datalogic had the lowest net income in EUR among the companies with available EUR data.\n\nAnswer: Datalogic had the lowest net income in EUR at the end of the period listed.",
+      "citations": [
+        {
+          "document": "Atreca, Inc..pdf",
+          "page": 83
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 74
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 119
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 8.04,
+      "usd": 0.003274
+    },
+    {
+      "id": "q11",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "No, HCA Healthcare, Inc. did not announce any changes to its dividend policy in the annual report. The report states that the Board of Directors declared a quarterly dividend of $0.60 per share payable on March 31, 2023, and that future declarations of quarterly dividends and the establishment of future record and payment dates are subject to the final determination of the Board of Directors. It also notes that there can be no assurance that dividends will continue and that dividend declarations depend on various factors including capital availability and Board determinations, but no change to the dividend policy itself was announced [S1, S3, S5].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 4.65,
+      "usd": 0.002335
+    },
+    {
+      "id": "q12",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "True",
+      "answer": "Yes, Brave Bison Group plc mentioned acquisitions in the annual report. They completed their third acquisition since mid-2020, acquiring Best Response Media during the period, which was integrated into Brave Bison Commerce. They also integrated Greenlight Digital into Brave Bison Performance, and Greenlight Commerce and Best Response Media into Brave Bison Commerce. Additionally, they carried out a purchase price allocation exercise related to the Greenlight acquisitions completed in 2021 [S1, S2, S4].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.5,
+      "usd": 0.001989
+    },
+    {
+      "id": "q13",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "False. There is no mention of any changes to Seiko Epson Corporation's dividend policy in the annual report. The report describes the existing dividend policy and payout targets but does not indicate any changes [S1].",
+      "citations": [
+        {
+          "document": "Seiko Epson Corporation.pdf",
+          "page": 67
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 3.9,
+      "usd": 0.001672
+    },
+    {
+      "id": "q14",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 3.83,
+      "usd": 0.001504
+    },
+    {
+      "id": "q15",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 4.0,
+      "usd": 0.001886
+    },
+    {
+      "id": "q16",
+      "kind": "names",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 3.77,
+      "usd": 0.001824
+    }
+  ]
+}

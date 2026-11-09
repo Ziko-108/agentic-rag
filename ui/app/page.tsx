@@ -123,6 +123,7 @@ export default function Home() {
         (ev) => {
           if (ev.type === "step") patchLast((m) => ({ ...m, steps: [...(m.steps ?? []), ev] }));
           else if (ev.type === "token") patchLast((m) => ({ ...m, content: m.content + ev.text }));
+          else if (ev.type === "reset") patchLast((m) => ({ ...m, content: "" }));
           else if (ev.type === "done")
             patchLast((m) => ({ ...m, content: ev.answer, citations: ev.citations, steps: ev.steps, usage: ev.usage, streaming: false, traceUrl: ev.trace_url ?? undefined }));
           else if (ev.type === "error") patchLast((m) => ({ ...m, streaming: false, error: ev.message }));

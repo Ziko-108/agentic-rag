@@ -1,0 +1,300 @@
+{
+  "label": "agent-v3",
+  "scorecard": {
+    "answer accuracy": 0.769,
+    "correct refusals on unanswerable": 1.0,
+    "evidence cited": 0.583,
+    "seconds per question": 7.426,
+    "usd for the whole set": 0.1469
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "kind": "number",
+      "answerable": true,
+      "expected": "294000",
+      "answer": "The number of healthcare professionals on staff at HCA Healthcare, Inc. at the end of the period (December 31, 2022) is approximately 294,000 employees, including approximately 87,000 part-time and PRN employees. Additionally, there are approximately 45,000 physicians on the medical staff. This workforce figure includes healthcare professionals on staff as reported in the annual report [S14, S17].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 9.47,
+      "usd": 0.009834
+    },
+    {
+      "id": "q02",
+      "kind": "number",
+      "answerable": true,
+      "expected": "406100000",
+      "answer": "The Cash flow from operations (net cash provided by operating activities) for Sonic Automotive, Inc. for the year ended December 31, 2022, was approximately $406.1 million USD [S1][S4].",
+      "citations": [
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 71
+        },
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 92
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.5,
+      "usd": 0.002466
+    },
+    {
+      "id": "q03",
+      "kind": "number",
+      "answerable": true,
+      "expected": "31400000",
+      "answer": "The annual report for Albany International Corp. provides total company-funded research expenses as $31.4 million in 2022, including $15.4 million in the Albany Engineered Composites (AEC) segment, which involves advanced composite parts for aerospace applications. However, the report does not specify a separate value for R&D spending exclusively on advanced programs. The research and development expenses include both company-sponsored and customer-funded activities but are not broken down further by advanced programs specifically.\n\nTherefore, the value of R&D spending on advanced programs at the end of the period is not separately disclosed.\n\nAnswer: N/A \u2014 this is not available in the uploaded reports. \n\nSources: [S14], [S15], [S16], [S17]",
+      "citations": [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        },
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 39
+        },
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 63
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 8.34,
+      "usd": 0.007715
+    },
+    {
+      "id": "q04",
+      "kind": "number",
+      "answerable": true,
+      "expected": "2300",
+      "answer": "The reports do not provide a specific value for the year-end patent portfolio related to aerospace technology for Albany International Corp. They mention that the company has an active portfolio containing over 2,300 patents and that they aggressively protect their proprietary intellectual property, including patents, but no monetary value of the patent portfolio is disclosed [S13]. \n\nTherefore, the answer is: N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 7.24,
+      "usd": 0.008705
+    },
+    {
+      "id": "q05",
+      "kind": "number",
+      "answerable": true,
+      "expected": "9686067000",
+      "answer": "The value of Total assets on the balance sheet for Origin Bancorp, Inc. at year-end December 31, 2022, was $9.69 billion. For the prior year-end December 31, 2021, total assets were $7.86 billion. This information is from the annual report for the period ending December 31, 2022 [S1][S3][S7].",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 169
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 191
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 6
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.86,
+      "usd": 0.002792
+    },
+    {
+      "id": "q06",
+      "kind": "number",
+      "answerable": true,
+      "expected": "39.3",
+      "answer": "The total power generation capacity of RWE AG at the end of the period (31 December 2022) was 39.3 GW. This figure excludes the capacity from Con Edison Clean Energy Businesses, which was acquired later on 1 March 2023. The generation capacity increased by 2.3 GW compared to 2021, driven by new wind and solar farms and other renewable energy projects [S1].",
+      "citations": [
+        {
+          "document": "RWE AG.pdf",
+          "page": 47
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.02,
+      "usd": 0.002972
+    },
+    {
+      "id": "q07",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Director"
+      ],
+      "answer": "The sources do not explicitly mention any changes in leadership positions or titles at Datalogic during the reporting period. The Board of Directors and Board of Statutory Auditors members are listed with their titles, but no information about appointments, resignations, or changes is provided.\n\nTherefore, the answer is: N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 9.57,
+      "usd": 0.021126
+    },
+    {
+      "id": "q08",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Chief Legal Counsel",
+        "Chief Financial Officer"
+      ],
+      "answer": "The sources do not explicitly state any changes in leadership positions at Origin Bancorp, Inc. during the reporting period. The lists of directors and executive officers are provided, but no mention of new appointments, departures, or title changes is found. Therefore, based on the available information:\n\nN/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 10.13,
+      "usd": 0.021701
+    },
+    {
+      "id": "q09",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "President and Chief Executive Officer"
+      ],
+      "answer": "The leadership position changes at Westwater Resources, Inc. in the reporting period are as follows:\n\n1. Frank Bakker was appointed President and Chief Executive Officer effective January 16, 2023.\n2. Steven M. Cates was appointed Senior Vice President \u2013 Finance and Chief Financial Officer effective January 16, 2023.\n3. John W. Lawrence was promoted to Chief Administrative Officer, while retaining his roles as General Counsel and Corporate Secretary, effective January 16, 2023. \n\nThese changes were made by the Board of Directors on January 16, 2023 [S1][S3][S4].",
+      "citations": [
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 62
+        },
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 16
+        },
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 17
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.13,
+      "usd": 0.002316
+    },
+    {
+      "id": "q10",
+      "kind": "name",
+      "answerable": true,
+      "expected": "Datalogic",
+      "answer": "The net incomes in EUR at the end of the period listed in the annual reports for the companies with available data are as follows:\n- Atreca, Inc.: Net loss of $97,157 thousand (reported in USD, so excluded from comparison)\n- INMUNE BIO INC.: Net loss of $27,299 thousand (reported in USD, so excluded from comparison)\n- Datalogic: Net income of \u20ac30,418 thousand for the year ended December 31, 2022\n- NuCana plc: Net loss of \u00a340,533 thousand for the year ended December 31, 2022 (reported in GBP, so excluded from comparison)\n- RWE AG: Net income of \u20ac2,717 million for the year ended December 31, 2022\n\nAmong the companies with net income reported in EUR, Datalogic had a net income of \u20ac30,418 thousand and RWE AG had a net income of \u20ac2,717 million. Since RWE AG's net income is higher, Datalogic had the lowest net income in EUR at the end of the period listed.\n\nTherefore, the company with the lowest net income in EUR is Datalogic with \u20ac30,418 thousand for the year ended December 31, 2022. Data for the other companies in EUR was not available or reported in other currencies and thus excluded from the comparison. [S5, S19, S33, S55, S56]",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 12.14,
+      "usd": 0.027824
+    },
+    {
+      "id": "q11",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "Yes, HCA Healthcare, Inc. announced changes to its dividend policy in the annual report. The Board of Directors initiated a cash dividend program in 2018 with regular quarterly dividends. In 2022, the Board declared four quarterly dividends of $0.56 per share, totaling $2.24 per share for the year. On January 26, 2023, the Board declared a quarterly dividend of $0.60 per share payable on March 31, 2023. The declaration, amount, and timing of dividends are subject to capital availability and Board determinations that dividends are in the best interest of stockholders and comply with laws and agreements. Future dividends depend on factors such as cash flows, capital requirements, and financial condition [S8, S9, S10, S13].",
+      "citations": [],
+      "correct": false,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 8.3,
+      "usd": 0.005867
+    },
+    {
+      "id": "q12",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "True",
+      "answer": "Yes, Brave Bison Group plc mentioned mergers and acquisitions in the annual report. They acquired Best Response Media Limited on 28 April 2022, a specialist ecommerce and mobile development company focused on the Adobe Commerce Platform. The acquisition was financed by existing cash balances, and the report details the fair value of assets acquired, liabilities assumed, and the consideration paid including initial cash, completion accounts adjustment, and deferred cash consideration. The goodwill recognized represents the acquired workforce and expected synergies from integration. The Group also carried out a full fair value adjustment exercise related to the acquisition of Greenlight Digital and Greenlight Commerce on 1 September 2021. Furthermore, the Group announced the purchase of 100% of the issued share capital of Social Chain Limited on 3 February 2023, a leading social media and influencer marketing agency, with an initial consideration of \u00a37.7 million. These acquisitions are part of the Group's acquisition and integration strategy [S13, S14, S15, S18, S20, S17].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 8.61,
+      "usd": 0.008875
+    },
+    {
+      "id": "q13",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "Yes, Seiko Epson Corporation announced its dividend policy in the annual report. The company aims to sustain business growth and generate stable cash flow while actively returning profits to shareholders. It has set a consolidated dividend payout ratio target of around 40% based on profit after tax from business profit. The company pays cash dividends twice a year, with the year-end dividend determined by the general shareholders' meeting and the interim dividend by the board of directors. The company also intends to be more active in purchasing treasury shares as warranted by share price and capital situation. The annual dividend paid was \u00a562 per share, and the Articles of Incorporation allow for an interim dividend with a record date of September 30 each year by resolution of the board of directors. There is no mention of a change to this policy in the report [S1].",
+      "citations": [
+        {
+          "document": "Seiko Epson Corporation.pdf",
+          "page": 67
+        }
+      ],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.33,
+      "usd": 0.002252
+    },
+    {
+      "id": "q14",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 6.13,
+      "usd": 0.001326
+    },
+    {
+      "id": "q15",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "The value of the number of fulfillment centers at year-end for 1-800-FLOWERS.COM, INC. is not explicitly stated in the provided sources. The report describes that the company's products are distributed from a combination of company-owned and leased distribution facilities across the country, shared by their brands to reduce transit time and logistics costs, but does not specify the exact number of fulfillment centers at year-end [S25]. \n\nTherefore, the answer is: N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [
+        {
+          "document": "1-800-FLOWERS.COM, INC..pdf",
+          "page": 17
+        }
+      ],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 9.98,
+      "usd": 0.020326
+    },
+    {
+      "id": "q16",
+      "kind": "names",
+      "answerable": false,
+      "expected": null,
+      "answer": "The annual report of Albany International Corp. does not mention the names of any new products launched. It discusses ongoing research and development activities, investment in proprietary products and manufacturing processes, and intellectual property, but does not specify new product names [S1].",
+      "citations": [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        }
+      ],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 4.07,
+      "usd": 0.000806
+    }
+  ]
+}

@@ -136,6 +136,7 @@ export function uploadPdf(file: File, onProgress: (fraction: number) => void): P
 export type StreamEvent =
   | { type: "step"; step: number; tool: string; args: Record<string, unknown>; summary: string }
   | { type: "token"; text: string }
+  | { type: "reset" } // the agent searches again: drop the text streamed so far
   | { type: "done"; answer: string; citations: Citation[]; steps: Step[]; usage: Usage; conversation_id: number; trace_url?: string | null }
   | { type: "error"; message: string };
 

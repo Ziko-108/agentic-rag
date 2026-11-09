@@ -154,7 +154,7 @@ def chat_pipeline(body: ChatIn, x_user_id: str = Header("anonymous"), session: S
 
 @app.post("/chat/stream")
 def chat_stream(body: ChatIn, x_user_id: str = Header("anonymous"), session: Session = Depends(get_session)):
-    """Server-sent events: `step`, `token`, then `done` (or `error`)."""
+    """Server-sent events: `step`, `token` (and `reset` when the agent retries), then `done` (or `error`)."""
     conv = _start(body, x_user_id, session)
 
     def events():

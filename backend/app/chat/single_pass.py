@@ -10,7 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.chat.llm import Usage, stream
-from app.chat.prompts import REFUSAL_TEXT, SINGLE_PASS_SYSTEM, citations, format_sources
+from app.chat.prompts import REFUSAL_TEXT, SINGLE_PASS_SYSTEM, citations, format_sources, guard
 from app.db import Document
 from app.retrieval.companies import detect_documents
 from app.retrieval.search import Hit, search
@@ -46,7 +46,7 @@ def run(session: Session, question: str, history: list[dict] | None = None, trac
             if kind == "text":
                 yield {"type": "token", "text": value}
             else:
-                answer = value["content"]
+                answer = guard(value["content"], SINGLE_PASS_SYSTEM)
     else:
         yield {"type": "token", "text": answer}
     yield {"type": "done", "answer": answer, "citations": citations(answer, hits),

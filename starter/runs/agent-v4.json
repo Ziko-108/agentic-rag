@@ -1,0 +1,282 @@
+{
+  "label": "agent-v4",
+  "scorecard": {
+    "answer accuracy": 0.769,
+    "correct refusals on unanswerable": 1.0,
+    "evidence cited": 0.417,
+    "seconds per question": 6.958,
+    "usd for the whole set": 0.1363
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "kind": "number",
+      "answerable": true,
+      "expected": "294000",
+      "answer": "At December 31, 2022, HCA Healthcare, Inc. had approximately 294,000 employees on staff, including about 87,000 part-time and PRN employees. The medical staff included approximately 45,000 physicians. Additionally, there were more than 93,000 registered nurses holding various positions throughout the organization. This represents the number of healthcare professionals on staff at the end of the period listed in the annual report. [S15, S2, S16]",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 8.58,
+      "usd": 0.009915
+    },
+    {
+      "id": "q02",
+      "kind": "number",
+      "answerable": true,
+      "expected": "406100000",
+      "answer": "The Cash flow from operations (net cash provided by operating activities) for Sonic Automotive, Inc. for the year ended December 31, 2022, was approximately $406.1 million USD [S1][S4].",
+      "citations": [
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 71
+        },
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 92
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.72,
+      "usd": 0.002556
+    },
+    {
+      "id": "q03",
+      "kind": "number",
+      "answerable": true,
+      "expected": "31400000",
+      "answer": "The value of R&D spending on advanced programs for Albany International Corp. in the Albany Engineered Composites (AEC) segment was $15.4 million for the year ended December 31, 2022. This is part of the total company-funded research expenses of $31.4 million in 2022. The AEC segment's R&D includes both company-sponsored and customer-funded activities related to advanced composite parts for aerospace applications.\n\nThus, the R&D spending on advanced programs (AEC segment) at the end of the period listed is $15.4 million for 2022. [S13, S15]",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 8.18,
+      "usd": 0.008254
+    },
+    {
+      "id": "q04",
+      "kind": "number",
+      "answerable": true,
+      "expected": "2300",
+      "answer": "The reports do not provide a specific value for the year-end patent portfolio related to aerospace technology for Albany International Corp. They mention that the company has an active portfolio containing over 2,300 patents in total and that they aggressively protect their proprietary intellectual property, but no specific valuation of the patent portfolio is disclosed. Therefore, the value of the year-end patent portfolio (aerospace tech) at the end of the period is not available in the reports. \n\nAnswer: N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 7.96,
+      "usd": 0.008888
+    },
+    {
+      "id": "q05",
+      "kind": "number",
+      "answerable": true,
+      "expected": "9686067000",
+      "answer": "The value of Total assets on the balance sheet for Origin Bancorp, Inc. at year-end December 31, 2022, was $9.69 billion. For the year-end December 31, 2021, it was $7.86 billion. The increase was primarily due to a merger with BTH and organic loan growth [S1][S3][S7].",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 169
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 191
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 6
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.76,
+      "usd": 0.002874
+    },
+    {
+      "id": "q06",
+      "kind": "number",
+      "answerable": true,
+      "expected": "39.3",
+      "answer": "The total power generation capacity of RWE AG at the end of the period (31 December 2022) was 39.3 GW. This figure excludes the capacity from Con Edison Clean Energy Businesses, which was acquired on 1 March 2023. The generation capacity increased by 2.3 GW compared to 2021 due to new wind and solar farms and other projects [S1].",
+      "citations": [
+        {
+          "document": "RWE AG.pdf",
+          "page": 47
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.85,
+      "usd": 0.003055
+    },
+    {
+      "id": "q07",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Director"
+      ],
+      "answer": "During the reporting period, at Datalogic, the Board of Directors was set at eight members with the appointment of a new director, Pietro Todescato, who will remain in office until the date of the Shareholders\u2019 Meeting convened to approve the financial statements for the year ending December 31, 2023. Maria Grazia Filippini was confirmed as a Director of the Company for the same term. The Executive Chairman is Romano Volta and the Chief Executive Officer is Valentina Volta. No other leadership position changes are explicitly mentioned in the available information. \n\nThus, the leadership position change was the appointment of Pietro Todescato as Director on the Board of Directors [S13, S16].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 6.5,
+      "usd": 0.005908
+    },
+    {
+      "id": "q08",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Chief Legal Counsel",
+        "Chief Financial Officer"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports. There is no specific information about leadership position changes at Origin Bancorp, Inc. in the reporting period. The signatures page lists current officers and directors but does not mention any changes. [S3]",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 265
+        }
+      ],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 4.72,
+      "usd": 0.002446
+    },
+    {
+      "id": "q09",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "President and Chief Executive Officer"
+      ],
+      "answer": "The leadership positions that changed at Westwater Resources, Inc. in the reporting period are:\n\n1. President and Chief Executive Officer - Frank Bakker was appointed effective January 16, 2023.\n2. Senior Vice President \u2013 Finance and Chief Financial Officer - Steven M. Cates was promoted to this position effective January 16, 2023.\n3. Chief Administrative Officer, General Counsel and Corporate Secretary - John W. Lawrence was promoted to Chief Administrative Officer while retaining his roles as General Counsel and Corporate Secretary effective January 16, 2023. \n\nThese changes were effective as of January 16, 2023 [S7][S9][S12].",
+      "citations": [
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 16
+        },
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 62
+        },
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 17
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.1,
+      "usd": 0.002623
+    },
+    {
+      "id": "q10",
+      "kind": "name",
+      "answerable": true,
+      "expected": "Datalogic",
+      "answer": "Among the companies with available data, Atreca, Inc. had a net loss of $97,157 thousand (approximately -97,157 EUR) for the year ended December 31, 2022. INMUNE BIO INC. had a net loss of $27,299 thousand (approximately -27,299 EUR) for the same period. NuCana plc had a net loss of \u00a340,533 thousand (approximately -40,533 EUR) for the year ended December 31, 2021. RWE AG had a net income of \u20ac2,717 million for the year ended December 31, 2022. Datalogic had a net profit of \u20ac30,126 thousand for the year ended December 31, 2022.\n\nSince Atreca, Inc. had the lowest net income (net loss) in EUR among these companies at the end of the period listed, it had the lowest net income in EUR. INMUNE BIO INC. and NuCana plc also had net losses but less negative than Atreca, Inc. RWE AG and Datalogic had positive net incomes. Data for some companies was not available or excluded as per the instructions. Therefore, Atreca, Inc. had the lowest net income in EUR at the end of the period listed in the annual reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 14.17,
+      "usd": 0.05425
+    },
+    {
+      "id": "q11",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "Yes, HCA Healthcare, Inc. announced a change to its dividend policy in the annual report. The Board of Directors declared a quarterly dividend of $0.60 per share on January 26, 2023, payable on March 31, 2023, which is an increase from the four quarterly dividends of $0.56 per share declared during 2022. The report also notes that future dividend declarations are subject to the Board's determination and various factors including capital availability and compliance with laws and agreements [S8, S9, S10, S12].",
+      "citations": [],
+      "correct": false,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 8.0,
+      "usd": 0.005817
+    },
+    {
+      "id": "q12",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "True",
+      "answer": "Yes, Brave Bison Group plc mentioned mergers and acquisitions in their annual report. Specifically, they disclosed the acquisition of Best Response Media Limited on 28 April 2022, including details of the purchase price, goodwill, and fair value adjustments. They also discussed the acquisition of Greenlight Digital and Greenlight Commerce on 1 September 2021, with related fair value adjustments and intangible asset recognition. Furthermore, they announced the purchase of Social Chain Limited on 3 February 2023. These acquisitions are accounted for as business combinations with purchase price allocations and goodwill recognized accordingly [S1, S4, S6, S7, S10].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 7.87,
+      "usd": 0.008734
+    },
+    {
+      "id": "q13",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "Yes, Seiko Epson Corporation announced changes to its dividend policy in the annual report. The company set a consolidated dividend payout ratio in the range of 40% as a medium-term target, based on profit after deducting an amount equivalent to the statutory effective tax rate from business profit. The company also intends to be more active in giving back to shareholders by agilely purchasing treasury shares as warranted by share price, capital situation, and other factors. The dividend policy is to pay cash dividends twice a year, with the year-end dividend determined by the general shareholders' meeting and the interim dividend determined by the board of directors. The company has paid an annual dividend of \u00a562 per share based on this policy [S1].",
+      "citations": [
+        {
+          "document": "Seiko Epson Corporation.pdf",
+          "page": 67
+        }
+      ],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.25,
+      "usd": 0.002308
+    },
+    {
+      "id": "q14",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports. The report for Armadale Capital Plc does not provide Gross margin (%) or Gross profit figures. It only shows operating loss and loss before taxation.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 5.95,
+      "usd": 0.001538
+    },
+    {
+      "id": "q15",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 the annual report of 1-800-FLOWERS.COM, INC. does not provide the value of the number of fulfillment centers at year-end. The report describes the fulfillment system and operations but does not specify the count of fulfillment centers at the end of the period. This is supported by the passages found in the report, including the detailed description of fulfillment operations on page 17 [S17].",
+      "citations": [
+        {
+          "document": "1-800-FLOWERS.COM, INC..pdf",
+          "page": 17
+        }
+      ],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 7.11,
+      "usd": 0.00862
+    },
+    {
+      "id": "q16",
+      "kind": "names",
+      "answerable": false,
+      "expected": null,
+      "answer": "The annual report of Albany International Corp. mentions that the company engages in significant research and development activities for new technology platforms, products, and product enhancements. Their Machine Clothing (MC) segment produces custom-designed products critical to paper machines, and they invest heavily in developing the next generation of belts and felts used in papermaking. The Engineered Composites segment designs and manufactures advanced composite parts for aerospace applications using proprietary technologies. The company collaborates with customers, OEMs, and suppliers on targeted development efforts to introduce new products and applications in their markets. However, the report does not specify the names of any new products launched.\n\nTherefore, the report describes new product development efforts and enhancements but does not provide specific names of new products launched by Albany International Corp. in the annual report [S13, S15, S16].",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 7.61,
+      "usd": 0.008502
+    }
+  ]
+}

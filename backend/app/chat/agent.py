@@ -5,6 +5,9 @@ the conversation and the loop repeats. It always stops, because of:
 - an iteration cap (MAX_STEPS model calls with tools);
 - a cost budget per question (settings.max_usd_per_question);
 - a repeat guard: the same tool with the same arguments is not run twice.
+One push-back: an answer with no citation after a single search (usually
+"N/A") is sent back once with a request to search with other words; the
+model tends to give up after the first search otherwise.
 When a limit is hit, one last call without tools asks for an answer from what
 was found so far. A tool that fails returns its error to the model as the
 result; it never fails the request.
@@ -13,6 +16,7 @@ result; it never fails the request.
 the answer as they happen:
     {"type": "step", ...}   a tool call and a short summary of its result
     {"type": "token", "text": ...}
+    {"type": "reset"}       the streamed text so far is discarded (push-back)
     {"type": "done", "answer", "citations", "usage", "steps"}
 """
 
@@ -26,7 +30,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.chat.llm import Usage, stream
-from app.chat.prompts import ANSWER_RULES, citations, format_sources
+from app.chat.prompts import ANSWER_RULES, CITE, citations, format_sources, guard
 from app.config import get_settings
 from app.db import Chunk, Document
 from app.retrieval.companies import detect_documents
@@ -34,6 +38,10 @@ from app.retrieval.search import Hit, search
 from app.tracing import NOOP, Span
 
 MAX_STEPS = 6
+
+RETRY = ("Your answer cites no source and you searched only once. Search again with different "
+         "words (the report's own terms, synonyms, a broader or narrower query) or read a page, "
+         "then answer. If nothing is found, answer N/A.")
 
 SYSTEM = f"""\
 You are a research assistant for a set of company annual reports (PDFs).
@@ -151,7 +159,7 @@ def run(session: Session, question: str, history: list[dict] | None = None, trac
     budget = get_settings().max_usd_per_question
     usage, tools, steps, seen = Usage(), Tools(session), [], set()
     messages = [{"role": "system", "content": SYSTEM}, *(history or []), {"role": "user", "content": question}]
-    answer = ""
+    answer, pushed_back = "", False
 
     for step in range(MAX_STEPS + 1):
         last = step == MAX_STEPS or usage.usd >= budget
@@ -166,6 +174,13 @@ def run(session: Session, question: str, history: list[dict] | None = None, trac
         calls = message["tool_calls"]
         if not calls:
             answer = message["content"]
+            searches = sum(s["tool"] == "search_reports" and s["summary"] not in ("error", "repeated call skipped")
+                           for s in steps)
+            if searches == 1 and not last and not pushed_back and not CITE.search(answer):
+                pushed_back = True
+                messages += [{"role": "assistant", "content": answer}, {"role": "user", "content": RETRY}]
+                yield {"type": "reset"}
+                continue
             break
         messages.append({"role": "assistant", "content": message["content"] or None, "tool_calls": [
             {"id": c["id"], "type": "function", "function": {"name": c["name"], "arguments": c["arguments"]}}
@@ -189,5 +204,6 @@ def run(session: Session, question: str, history: list[dict] | None = None, trac
             yield event
             messages.append({"role": "tool", "tool_call_id": c["id"], "content": result})
 
+    answer = guard(answer, SYSTEM)
     yield {"type": "done", "answer": answer, "citations": citations(answer, tools.sources),
            "usage": usage.as_dict(), "steps": steps}
