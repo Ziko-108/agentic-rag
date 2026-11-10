@@ -24,6 +24,10 @@ services:
       POSTGRES_HOST: db
       SEED_DIR: /data/pdfs
       OMP_NUM_THREADS: 4  # the CPU reranker may use 4 threads, not every core
+      # fallback LLM: Ollama on the host, used only if FALLBACK_MODEL is set in .env
+      OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434/v1}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Linux needs this; Docker Desktop has it built in
     volumes:
       - ./starter/data/pdfs:/data/pdfs:ro
     ports:

@@ -1,0 +1,428 @@
+{
+  "label": "agent-v5",
+  "scorecard": {
+    "answer accuracy": 0.846,
+    "correct refusals on unanswerable": 1.0,
+    "evidence cited": 0.75,
+    "seconds per question": 6.325,
+    "usd for the whole set": 0.0867
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "kind": "number",
+      "answerable": true,
+      "expected": "294000",
+      "answer": "The number of healthcare professionals on staff at HCA Healthcare, Inc. at the end of the period (December 31, 2022) was approximately 294,000 employees, including approximately 87,000 part-time and PRN employees. Additionally, there were 45,000 physicians on the medical staff [S1][S2].",
+      "citations": [
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 35
+        },
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 3
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.4,
+      "usd": 0.002737
+    },
+    {
+      "id": "q02",
+      "kind": "number",
+      "answerable": true,
+      "expected": "406100000",
+      "answer": "The Cash flow from operations (net cash provided by operating activities) for Sonic Automotive, Inc. for the year ended December 31, 2022, was approximately $406.1 million USD [S1][S4].",
+      "citations": [
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 71
+        },
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 92
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.01,
+      "usd": 0.002556
+    },
+    {
+      "id": "q03",
+      "kind": "number",
+      "answerable": true,
+      "expected": "31400000",
+      "answer": "The value of R&D spending on advanced programs for Albany International Corp. at the end of the period listed in the annual report was $31.4 million in 2022. This includes company-funded research expenses, which encompass advanced programs as part of their core research and development activities [S1][S5].",
+      "citations": [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        },
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 63
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.96,
+      "usd": 0.002313
+    },
+    {
+      "id": "q04",
+      "kind": "number",
+      "answerable": true,
+      "expected": "2300",
+      "answer": "N/A \u2014 the uploaded reports for Albany International Corp. do not provide a specific value for the year-end patent portfolio related to aerospace technology. The reports mention the size of the patent portfolio (over 2,300 patents) and ongoing patent activity but do not disclose a monetary value for the patent portfolio at year-end.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 7.39,
+      "usd": 0.009559
+    },
+    {
+      "id": "q05",
+      "kind": "number",
+      "answerable": true,
+      "expected": "9686067000",
+      "answer": "The value of Total assets on the balance sheet for Origin Bancorp, Inc. at year-end December 31, 2022, was $9.69 billion. For the year-end December 31, 2021, the total assets were $7.86 billion. This information is from the annual report for the period ending December 31, 2022 [S1][S3][S7].",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 169
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 191
+        },
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 6
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.09,
+      "usd": 0.002882
+    },
+    {
+      "id": "q06",
+      "kind": "number",
+      "answerable": true,
+      "expected": "39.3",
+      "answer": "The total power generation capacity of RWE AG at the end of the period (31 December 2022) was 39.3 GW. This figure excludes the capacity from Con Edison Clean Energy Businesses, which was acquired later on 1 March 2023. The generation capacity increased by 2.3 GW compared to 2021 due to new wind and solar farms and other projects [S1].",
+      "citations": [
+        {
+          "document": "RWE AG.pdf",
+          "page": 47
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.99,
+      "usd": 0.003057
+    },
+    {
+      "id": "q07",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Director"
+      ],
+      "answer": "During the reporting period, at Datalogic, the Shareholders' Meeting on April 29, 2022, confirmed Maria Grazia Filippini as a Director of the Company and appointed a new Director, Pietro Todescato. Both are to remain in office until the date of the Shareholders' Meeting convened to approve the financial statements for the year ending December 31, 2023. No other leadership position changes are mentioned in the available information. Thus, the leadership position change was the appointment of a new Director and the confirmation of an existing Director. [S24]",
+      "citations": [
+        {
+          "document": "Datalogic.pdf",
+          "page": 68
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 7.29,
+      "usd": 0.006162
+    },
+    {
+      "id": "q08",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Chief Legal Counsel",
+        "Chief Financial Officer"
+      ],
+      "answer": "The reports do not explicitly state any changes in leadership positions or executive officer appointments or resignations at Origin Bancorp, Inc. during the reporting period. The executive officers and directors are listed, but no mention of changes in their positions is found.\n\nTherefore, the answer remains: N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 7.98,
+      "usd": 0.009363
+    },
+    {
+      "id": "q09",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "President and Chief Executive Officer"
+      ],
+      "answer": "The leadership positions that changed at Westwater Resources, Inc. in the reporting period are:\n\n1. President and Chief Executive Officer - Frank Bakker was appointed effective January 16, 2023.\n2. Senior Vice President \u2013 Finance and Chief Financial Officer - Steven M. Cates was promoted to this position effective January 16, 2023.\n3. Chief Administrative Officer, General Counsel and Corporate Secretary - John W. Lawrence was promoted to Chief Administrative Officer while retaining his roles as General Counsel and Corporate Secretary effective January 16, 2023. \n\nThese changes were effective as of January 16, 2023 [S7][S9][S12].",
+      "citations": [
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 16
+        },
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 62
+        },
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 17
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.28,
+      "usd": 0.002623
+    },
+    {
+      "id": "q10",
+      "kind": "name",
+      "answerable": true,
+      "expected": "Datalogic",
+      "answer": "The net income (or net loss) in EUR for the companies at the end of the period listed in their annual reports are as follows:\n- INMUNE BIO INC.: Net loss of $27,299,000 (USD) for the year ended December 31, 2022 (no EUR figure available, so excluded)\n- Datalogic: Net profit of \u20ac30,418,000 for the year ended December 31, 2022\n- NuCana plc: Net loss of \u00a332,021,000 for the year ended December 31, 2022 (no EUR figure available, so excluded)\n- RWE AG: Net income of \u20ac2,717 million for the year ended December 31, 2022\n- Atreca, Inc.: No data available in the sources\n\nAmong the companies with available EUR net income data, Datalogic had a net profit of \u20ac30,418,000 and RWE AG had a net income of \u20ac2,717 million (\u20ac2,717,000,000). INMUNE BIO INC. and NuCana plc reported net losses but only in USD and GBP respectively, so they are excluded from the EUR comparison.\n\nTherefore, the company with the lowest net income in EUR among those with available data is Datalogic with \u20ac30,418,000 net profit for the year ended December 31, 2022. RWE AG had a much higher net income.\n\nIf considering losses in other currencies is not allowed, Datalogic is the lowest net income company in EUR. If losses in other currencies were converted and considered, INMUNE BIO INC. and NuCana plc would have lower net income, but that data is not available in EUR.\n\nHence, the answer is Datalogic. [S2, S3, S4, S5, S7, S25, S26, S27, S28, S29, S30, S31, S37, S39, S40, S41, S42, S43, S44, S45, S46, S47, S48, S49, S50, S51, S52, S53, S54, S55, S56, S57, S58, S59, S60]",
+      "citations": [
+        {
+          "document": "Datalogic.pdf",
+          "page": 213
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 154
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 74
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 155
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 75
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 153
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 107
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 170
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 108
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 166
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 104
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 167
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 106
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 140
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 55
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 119
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 53
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 144
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 54
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 26
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 136
+        },
+        {
+          "document": "RWE AG.pdf",
+          "page": 120
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 12.83,
+      "usd": 0.03034
+    },
+    {
+      "id": "q11",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "Yes, HCA Healthcare, Inc. announced a change in its dividend policy in the annual report. Specifically, during 2022, the Board of Directors declared four quarterly dividends of $0.56 per share, totaling $2.24 per share for the year. Then, on January 26, 2023, the Board declared a quarterly dividend of $0.60 per share payable on March 31, 2023. The report notes that future dividend declarations and amounts are subject to the Board's determination based on capital availability and other factors, indicating an increase in the quarterly dividend from $0.56 to $0.60 per share starting in 2023 [S1, S2, S3, S4].",
+      "citations": [
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 59
+        },
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 75
+        },
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 61
+        },
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 132
+        }
+      ],
+      "correct": false,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 5.31,
+      "usd": 0.001621
+    },
+    {
+      "id": "q12",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "True",
+      "answer": "Yes, Brave Bison Group plc mentioned mergers and acquisitions in their annual report. They acquired Best Response Media Limited on 28 April 2022, and also carried out a full fair value adjustment exercise related to the acquisition of Greenlight Digital and Greenlight Commerce on 1 September 2021. Additionally, they announced the purchase of 100% of the issued share capital of Social Chain Limited on 3 February 2023. These acquisitions are detailed with financial considerations and accounting treatments in the report. [S1, S4, S6, S7, S10]",
+      "citations": [
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 46
+        },
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 61
+        },
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 60
+        },
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 51
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.58,
+      "usd": 0.002504
+    },
+    {
+      "id": "q13",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "Seiko Epson Corporation did not announce any changes to its dividend policy in the annual report. The company states its dividend policy as aiming for a consolidated dividend payout ratio in the range of 40% as a medium-term target, paying cash dividends twice a year, and maintaining stable dividends. The report mentions that the company has paid an annual dividend of \u00a562 per share and describes the dividend payment process, but there is no indication of a change to the dividend policy itself [S1].",
+      "citations": [
+        {
+          "document": "Seiko Epson Corporation.pdf",
+          "page": 67
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 4.93,
+      "usd": 0.002233
+    },
+    {
+      "id": "q14",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports. The report for Armadale Capital Plc does not provide Gross margin (%) or Gross profit figures. It only shows operating loss and loss before taxation for the last period [S1].",
+      "citations": [
+        {
+          "document": "Armadale Capital Plc.pdf",
+          "page": 22
+        }
+      ],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 6.87,
+      "usd": 0.00155
+    },
+    {
+      "id": "q15",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 6.69,
+      "usd": 0.006314
+    },
+    {
+      "id": "q16",
+      "kind": "names",
+      "answerable": false,
+      "expected": null,
+      "answer": "The annual report of Albany International Corp. does not mention the names of any new products launched. It discusses ongoing research and development activities and intellectual property but does not specify new product names. [S1]",
+      "citations": [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        }
+      ],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 4.6,
+      "usd": 0.000881
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "label": "agent-ollama",
+  "scorecard": {
+    "answer accuracy": 0.538,
+    "correct refusals on unanswerable": 1.0,
+    "evidence cited": 0.5,
+    "seconds per question": 9.727,
+    "usd for the whole set": 0.0
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "kind": "number",
+      "answerable": true,
+      "expected": "294000",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 13.39,
+      "usd": 0.0
+    },
+    {
+      "id": "q02",
+      "kind": "number",
+      "answerable": true,
+      "expected": "406100000",
+      "answer": "The Cash flow from operations for Sonic Automotive, Inc. for the most recent period (2022) is approximately $406.1 million [S5].",
+      "citations": [
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 92
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 7.31,
+      "usd": 0.0
+    },
+    {
+      "id": "q03",
+      "kind": "number",
+      "answerable": true,
+      "expected": "31400000",
+      "answer": "Based on the information provided in the annual report, the value of R&D spending on advanced programs at the end of the period listed is not explicitly stated. The report provides R&D spending by business segment, but does not specify spending on advanced programs. Therefore, the answer is:\n\nN/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 13.76,
+      "usd": 0.0
+    },
+    {
+      "id": "q04",
+      "kind": "number",
+      "answerable": true,
+      "expected": "2300",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 11.24,
+      "usd": 0.0
+    },
+    {
+      "id": "q05",
+      "kind": "number",
+      "answerable": true,
+      "expected": "9686067000",
+      "answer": "The value of Total assets on the balance sheet at year-end for Origin Bancorp, Inc. as of December 31, 2022, is $9,686,067 thousand [S3].",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 191
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 8.23,
+      "usd": 0.0
+    },
+    {
+      "id": "q06",
+      "kind": "number",
+      "answerable": true,
+      "expected": "39.3",
+      "answer": "The value of Total power generation capacity (GW) of RWE AG at the end of the period listed in the annual report is 39.3 GW [S1].",
+      "citations": [
+        {
+          "document": "RWE AG.pdf",
+          "page": 47
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 7.61,
+      "usd": 0.0
+    },
+    {
+      "id": "q07",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Director"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 11.12,
+      "usd": 0.0
+    },
+    {
+      "id": "q08",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Chief Legal Counsel",
+        "Chief Financial Officer"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 13.84,
+      "usd": 0.0
+    },
+    {
+      "id": "q09",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "President and Chief Executive Officer"
+      ],
+      "answer": "The leadership positions that changed at Westwater Resources, Inc. in the reporting period include:\n\n- Frank Bakker was appointed as President and Chief Executive Officer.\n- Steven M. Cates was appointed as Senior Vice President \u2013 Finance and Chief Financial Officer.\n- John W. Lawrence became Chief Administrative Officer, General Counsel and Corporate Secretary.\n\nThese changes took effect on January 16, 2023. [S1, S2, S3]",
+      "citations": [
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 16
+        },
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 62
+        },
+        {
+          "document": "Westwater Resources, Inc..pdf",
+          "page": 17
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 6.27,
+      "usd": 0.0
+    },
+    {
+      "id": "q10",
+      "kind": "name",
+      "answerable": true,
+      "expected": "Datalogic",
+      "answer": "Based on the information provided in the annual reports, the company with the lowest net income in EUR at the end of the period listed is \"NuCana plc\" with a net profit of \u20ac30,126,000 for the year ended December 31, 2022 [S1, S8, S10, S11].",
+      "citations": [
+        {
+          "document": "NuCana plc.pdf",
+          "page": 153
+        },
+        {
+          "document": "NuCana plc.pdf",
+          "page": 108
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 154
+        },
+        {
+          "document": "Datalogic.pdf",
+          "page": 74
+        }
+      ],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 9.07,
+      "usd": 0.0
+    },
+    {
+      "id": "q11",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "Based on the sources provided, HCA Healthcare, Inc. did not announce any specific changes to its dividend policy in the annual report. The report mentions the declaration of dividends and the factors that influence the Board of Directors' decisions regarding dividends, but there is no indication of a change in the dividend policy itself. Therefore, the answer is False.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 14.17,
+      "usd": 0.0
+    },
+    {
+      "id": "q12",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "True",
+      "answer": "Yes, Brave Bison Group plc mentioned mergers or acquisitions in their annual report. They acquired Best Response Media Limited and Social Chain Limited. [S1, S6]",
+      "citations": [
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 32
+        },
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 61
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 5.69,
+      "usd": 0.0
+    },
+    {
+      "id": "q13",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "Based on the information provided in the annual report, there is no mention of any changes to Seiko Epson Corporation's dividend policy. The report discusses the dividend payout ratio, the frequency of dividend payments, and the process for declaring dividends, but does not indicate any changes to the dividend policy. Therefore, the answer is False. [S1]",
+      "citations": [
+        {
+          "document": "Seiko Epson Corporation.pdf",
+          "page": 67
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 7.18,
+      "usd": 0.0
+    },
+    {
+      "id": "q14",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 10.15,
+      "usd": 0.0
+    },
+    {
+      "id": "q15",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 11.44,
+      "usd": 0.0
+    },
+    {
+      "id": "q16",
+      "kind": "names",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports. The report mentions investment in research and development and the development of proprietary intellectual property, but does not specifically list any new products launched by Albany International Corp. [S1]",
+      "citations": [
+        {
+          "document": "Albany International Corp..pdf",
+          "page": 16
+        }
+      ],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 5.17,
+      "usd": 0.0
+    }
+  ]
+}

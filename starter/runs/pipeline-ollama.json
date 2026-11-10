@@ -1,0 +1,270 @@
+{
+  "label": "pipeline-ollama",
+  "scorecard": {
+    "answer accuracy": 0.462,
+    "correct refusals on unanswerable": 1.0,
+    "evidence cited": 0.333,
+    "seconds per question": 6.522,
+    "usd for the whole set": 0.0
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "kind": "number",
+      "answerable": true,
+      "expected": "294000",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 9.25,
+      "usd": 0.0
+    },
+    {
+      "id": "q02",
+      "kind": "number",
+      "answerable": true,
+      "expected": "406100000",
+      "answer": "The Cash flow from operations for Sonic Automotive, Inc. was approximately $406.1 million for the year 2022 [S1].",
+      "citations": [
+        {
+          "document": "Sonic Automotive, Inc..pdf",
+          "page": 71
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 6.4,
+      "usd": 0.0
+    },
+    {
+      "id": "q03",
+      "kind": "number",
+      "answerable": true,
+      "expected": "31400000",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 5.32,
+      "usd": 0.0
+    },
+    {
+      "id": "q04",
+      "kind": "number",
+      "answerable": true,
+      "expected": "2300",
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 5.47,
+      "usd": 0.0
+    },
+    {
+      "id": "q05",
+      "kind": "number",
+      "answerable": true,
+      "expected": "9686067000",
+      "answer": "$1,115,157 thousand \u2014 this is the value of Total assets on the balance sheet at year-end for the period listed in the annual report [S1].",
+      "citations": [
+        {
+          "document": "Origin Bancorp, Inc..pdf",
+          "page": 253
+        }
+      ],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 6.79,
+      "usd": 0.0
+    },
+    {
+      "id": "q06",
+      "kind": "number",
+      "answerable": true,
+      "expected": "39.3",
+      "answer": "39.3 GW [S1]",
+      "citations": [
+        {
+          "document": "RWE AG.pdf",
+          "page": 47
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 6.2,
+      "usd": 0.0
+    },
+    {
+      "id": "q07",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Director"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 5.19,
+      "usd": 0.0
+    },
+    {
+      "id": "q08",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "Chief Legal Counsel",
+        "Chief Financial Officer"
+      ],
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 5.38,
+      "usd": 0.0
+    },
+    {
+      "id": "q09",
+      "kind": "names",
+      "answerable": true,
+      "expected": [
+        "President and Chief Executive Officer"
+      ],
+      "answer": "Yes. The following leadership positions changed at Westwater Resources, Inc. in the reporting period:\n\n- Frank Bakker was appointed President and Chief Executive Officer.\n- Steven M. Cates was appointed Senior Vice President \u2013 Finance and Chief Financial Officer.\n- John W. Lawrence became Chief Administrative Officer, while retaining his roles as General Counsel and Corporate Secretary.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 6.55,
+      "usd": 0.0
+    },
+    {
+      "id": "q10",
+      "kind": "name",
+      "answerable": true,
+      "expected": "Datalogic",
+      "answer": "Yes, \"NuCana plc\" had the lowest net income in EUR at the end of the period listed in the annual report, which was (32021,000) EUR for the year ended December 31, 2022. \n\nThis figure is derived from the loss for the year reported in NuCana plc's annual report [S13]. The other companies either did not report a loss or had a higher loss or negative income compared to NuCana plc.",
+      "citations": [
+        {
+          "document": "NuCana plc.pdf",
+          "page": 105
+        }
+      ],
+      "correct": false,
+      "has_evidence": true,
+      "evidence_cited": false,
+      "seconds": 11.47,
+      "usd": 0.0
+    },
+    {
+      "id": "q11",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "No. The annual report mentions that HCA Healthcare, Inc. has a dividend policy but does not indicate any changes to it. [S1] [S2] [S3]",
+      "citations": [
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 132
+        },
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 7
+        },
+        {
+          "document": "HCA Healthcare, Inc..pdf",
+          "page": 59
+        }
+      ],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 6.54,
+      "usd": 0.0
+    },
+    {
+      "id": "q12",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "True",
+      "answer": "Yes. Brave Bison Group plc mentioned several mergers and acquisitions in the annual report. Specifically, the report states that the company completed the integration of four businesses and made its third acquisition since Theo, Philippa and the Executive Chairman joined the company mid-2020. The report also mentions the acquisition of Best Response Media during the period, which was integrated into Brave Bison Commerce. Additionally, it notes the integration of Greenlight Digital into Brave Bison Performance, and Greenlight Commerce and Best Response Media into Brave Bison Commerce. [S1]",
+      "citations": [
+        {
+          "document": "Brave Bison Group plc.pdf",
+          "page": 6
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 7.26,
+      "usd": 0.0
+    },
+    {
+      "id": "q13",
+      "kind": "boolean",
+      "answerable": true,
+      "expected": "False",
+      "answer": "False \u2014 the annual report does not explicitly mention any changes to the dividend policy. It states that the Company has set a consolidated dividend payout ratio in the range of 40% as a medium-term target, but does not indicate any recent changes to this policy. [S1]",
+      "citations": [
+        {
+          "document": "Seiko Epson Corporation.pdf",
+          "page": 67
+        }
+      ],
+      "correct": true,
+      "has_evidence": true,
+      "evidence_cited": true,
+      "seconds": 6.44,
+      "usd": 0.0
+    },
+    {
+      "id": "q14",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 5.17,
+      "usd": 0.0
+    },
+    {
+      "id": "q15",
+      "kind": "number",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 5.56,
+      "usd": 0.0
+    },
+    {
+      "id": "q16",
+      "kind": "names",
+      "answerable": false,
+      "expected": null,
+      "answer": "N/A \u2014 this is not available in the uploaded reports.",
+      "citations": [],
+      "correct": true,
+      "has_evidence": false,
+      "evidence_cited": true,
+      "seconds": 5.37,
+      "usd": 0.0
+    }
+  ]
+}

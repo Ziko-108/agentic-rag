@@ -4,7 +4,8 @@ Every number here comes from a file in [starter/runs/](starter/runs/), written b
 [starter/eval.py](starter/eval.py) (golden set, unchanged scoring),
 [backend/scripts/retrieval_eval.py](backend/scripts/retrieval_eval.py) (retrieval
 alone, no LLM) or [backend/scripts/injection_eval.py](backend/scripts/injection_eval.py)
-(prompt injection). The model is `gpt-4.1-mini` throughout.
+(prompt injection). The model is `gpt-4.1-mini` throughout, except the `*-ollama`
+runs, which use the local fallback model.
 
 ## How to read the numbers
 
@@ -66,8 +67,12 @@ off-topic ones at ≤ 0.25, so the cut is **0.30**. Off-topic questions now retu
 | pipeline-v2-rerun | 0.769 | 1.0 | 0.417 | 4.4 | 0.033 |
 | agent-v2-rerun | 0.692 | 1.0 | 0.417 | 5.6 | 0.062 |
 | agent-v3 | 0.769 | 1.0 | 0.583 | 7.4 | 0.147 |
-| **pipeline-v4** | **0.846** | 1.0 | **0.500** | **4.3** | **0.033** |
-| **agent-v4** | **0.769** | 1.0 | **0.417** | **7.0** | **0.136** |
+| pipeline-v4 | 0.846 | 1.0 | 0.500 | 4.3 | 0.033 |
+| agent-v4 | 0.769 | 1.0 | 0.417 | 7.0 | 0.136 |
+| **pipeline-v5** | **0.846** | 1.0 | **0.667** | **4.4** | **0.034** |
+| **agent-v5** | **0.846** | 1.0 | **0.750** | **6.3** | **0.087** |
+| pipeline-ollama (fallback only) | 0.462 | 1.0 | 0.333 | 6.5 | 0 |
+| agent-ollama (fallback only) | 0.538 | 1.0 | 0.500 | 9.7 | 0 |
 
 \* The first question in pipeline-v1 took 106 s while the reranker loaded. The
 reranker is now baked into the image and loaded at startup.
@@ -154,7 +159,69 @@ were re-run on the golden set to check for regressions:
   noise.
 
 Agent q07 is a real answer this time (the new director Pietro Todescato), but it
-has no citation. That is a recurring agent weakness, see the README.
+showed no citation. The next section explains why.
+
+### v4 → v5: read grouped citation tags like "[S2, S5]". Kept.
+
+**What (one change):** the citation parser only understood `[S2]`. Models also
+write `[S2, S5]`, `[S2,5]` or `[S2; S5]`. Those tags now count, both in the
+server's citations and in the UI's numbered buttons.
+
+**How it was found:** testing the Ollama fallback. qwen2.5 answered "39.3 GW
+[S13, S15, S19, S20]" and the response had no citations. A search of every
+committed run showed gpt-4.1-mini does the same:
+- agent-v4: 6 answers (q01, q03, q07, q11, q12, q16);
+- pipeline-v4: 2 answers (q09, q12).
+
+All of those citations had been lost, and the push-back had treated those
+answers as uncited.
+
+**Why it generalises:** it is a format fix. It depends only on how tags are
+written, not on any question.
+
+**Result:**
+
+| | v4 → v5 accuracy | evidence | $ for the set |
+|---|---|---|---|
+| pipeline | 0.846 → 0.846 | 0.500 → **0.667** | 0.033 → 0.034 |
+| agent | 0.769 → **0.846** | 0.417 → **0.750** | 0.136 → **0.087** |
+
+- **Pipeline:** only evidence changed. The answers didn't change; their
+  citations are now read.
+- **Agent:** accuracy rose too. The push-back no longer fires on answers that
+  were cited all along, so these answers keep their first, cited form, and
+  cost fell by a third.
+
+**Hand check:**
+- **Agent q07:** correct and cited (the Shareholders' Meeting confirmed Maria
+  Grazia Filippini and appointed Pietro Todescato). The pipeline answers N/A.
+- **Agent q04:** still half right ("over 2,300 patents", then N/A).
+- **Agent q13:** back to correct, which is noise.
+
+**What this changes in the earlier log:** part of the v3 push-back's extra cost
+came from answers that cited in grouped form and were sent back for nothing.
+The "agent often doesn't cite" observation in v4 was mostly this parser bug.
+
+### Fallback model: the same set with OpenAI down. Measured, nothing to keep or drop.
+
+**Setup:** the main model name was set to one that doesn't exist
+(`CHAT_MODEL=gpt-outage-simulated`, a temporary compose override). Every chat
+call got a 404 from OpenAI and was retried on the fallback,
+`qwen2.5:7b-16k`, in Ollama on the host GPU (RTX 4060, 5.5 GB, fully in VRAM).
+Embeddings still came from OpenAI. The variant is `qwen2.5:7b` with
+`num_ctx=16384`: Ollama's default context would have cut the 6–8k-token
+prompts.
+
+**Result** (`*-ollama` runs):
+- accuracy: pipeline 0.462, agent 0.538;
+- evidence: pipeline 0.333, agent 0.500;
+- refusals: still 1.0 in both modes;
+- cost: $0;
+- time: 6.5 and 9.7 s per question.
+
+The fallback is clearly weaker, but it degrades safely: it says N/A instead of
+inventing answers. With the weaker model the agent beats the pipeline, because
+a second search makes up for a weaker first answer.
 
 ### Tried and dropped
 
@@ -172,42 +239,54 @@ and one LLM call. The agent has four tools (search, read page, list documents,
 calculator), at most 6 steps, a $0.05 budget per question, a repeat guard and
 the push-back. Final runs:
 
-| | pipeline-v4 | agent-v4 |
+| | pipeline-v5 | agent-v5 |
 |---|---|---|
-| answer accuracy | **0.846** | 0.769 |
+| answer accuracy | 0.846 | 0.846 |
 | correct refusals | 1.0 | 1.0 |
-| evidence cited | **0.500** | 0.417 |
-| seconds per question | **4.3** | 7.0 |
-| $ for 16 questions | **0.033** | 0.136 |
+| evidence cited | 0.667 | **0.750** |
+| seconds per question | **4.4** | 6.3 |
+| $ for 16 questions | **0.034** | 0.087 |
+| with only the fallback model (qwen2.5:7b): accuracy / evidence | 0.462 / 0.333 | **0.538 / 0.500** |
 
 Per question, over the runs since v2:
 - **Where the agent helps:**
-  - q03 and q04 need a second search with other words to reach the right page.
-  - The multi-company question (q10) works in both modes. In the pipeline that
-    is only because it already runs one search per detected company, a piece
-    of agent-like logic built into the pipeline.
+  - **q07** (leadership changes at Datalogic): the pipeline answers N/A. The
+    agent's later searches find the director appointments, and in v5 its
+    answer is right and cited.
+  - **q03 and q04:** these need a second search with other words to reach the
+    right page (Albany p.16).
+  - **The multi-company question (q10)** works in both modes. In the pipeline
+    that is only because it already runs one search per detected company, a
+    piece of agent-like logic built into the pipeline.
 - **Where the agent hurts:**
-  - It often answers without [S#] tags. On q07 in v4 the answer was right but
-    uncited.
-  - It writes longer, hedged answers.
+  - It writes longer, hedged answers, and q04 cites the right fact and then
+    says N/A.
   - On q11 it says "Yes" to a dividend-policy change where the expected answer
-    is "No".
+    is "No". The pipeline gets q11 right.
 
-**Is the agent worth it?** On this golden set, **no**. The pipeline is at least
-as accurate and cites evidence at least as often, and it is 1.6× faster and 4×
-cheaper. The gaps (one question of accuracy, one of evidence) are within noise,
-so the honest summary is "the same quality for 4× the price". Two things explain
-it:
+**Is the agent worth it?** **Only just, and not on cost.**
+- **Accuracy:** a tie. Both get 11/13; by hand the agent is 10.5, because q04
+  is half right.
+- **Evidence:** the agent finds the golden page for one more question (0.750
+  vs 0.667), which is within the one-question noise.
+- **Price:** 2.6× the cost and 1.4× the time. That is still under one cent per
+  question.
+
+Two reasons it is close:
 - The questions mostly name one company and one fact, so one good hybrid search
   with a reranker and a company filter already finds the page.
 - gpt-4.1-mini is a weak planner: it rarely searches twice unless the code
-  forces it to.
+  pushes it.
 
-The agent would pay off on questions where the first search can't succeed:
-comparisons across many reports, a follow-up that needs a whole page or a table
-(`read_page`), or arithmetic (`calculator`). The golden set has one such
-question. The app keeps the agent as its default, because that is the task, and
-the UI has a one-click switch to the single-pass mode.
+The agent's margin grows when the model is weaker: with only the fallback
+model, it is ahead on both accuracy and evidence. It would also pay off on
+questions the golden set barely has: comparisons across many reports,
+follow-ups that need a whole page or table (`read_page`), and arithmetic
+(`calculator`).
+
+I keep the agent as the default, because it is never worse on quality and it
+is safer when the model degrades. The single-pass mode is one click away for
+anyone who cares about cost.
 
 ## 4. Prompt-injection test set (bonus)
 

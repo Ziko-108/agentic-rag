@@ -44,7 +44,8 @@ function Answer({ text, citations, onOpen }: { text: string; citations: Citation
   const index = new Map<string, number>();
   citations.forEach((c, i) => (c.tags ?? [c.source]).forEach((t) => index.set(t, i)));
 
-  const parts = text.split(/\[S(\d+)\]/g); // odd positions hold the numbers
+  // "[S2]" or a group like "[S2, S5]"; odd positions hold the tag list
+  const parts = text.split(/\[(S\d+(?:\s*[,;]\s*S?\d+)*)\]/g);
   const out: React.ReactNode[] = [];
   let previous = -1;
   parts.forEach((part, i) => {
@@ -53,14 +54,16 @@ function Answer({ text, citations, onOpen }: { text: string; citations: Citation
       if (part.trim()) previous = -1;
       return;
     }
-    const n = index.get(`S${part}`);
-    if (n === undefined || n === previous) return; // unknown tag, or the same source twice in a row
-    previous = n;
-    out.push(
-      <button key={i} className="cite" onClick={() => onOpen(citations[n])} title={`${citations[n].document}, p. ${citations[n].page}`}>
-        {n + 1}
-      </button>,
-    );
+    (part.match(/\d+/g) ?? []).forEach((num, j) => {
+      const n = index.get(`S${num}`);
+      if (n === undefined || n === previous) return; // unknown tag, or the same source twice in a row
+      previous = n;
+      out.push(
+        <button key={`${i}-${j}`} className="cite" onClick={() => onOpen(citations[n])} title={`${citations[n].document}, p. ${citations[n].page}`}>
+          {n + 1}
+        </button>,
+      );
+    });
   });
   return <div className="answer">{out}</div>;
 }

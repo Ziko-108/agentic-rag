@@ -64,7 +64,7 @@ This brings it to about 2.5 s per question on an RTX 4060 Laptop.
 ```bash
 pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt -r requirements-dev.txt
-pytest                       # 45 tests: unit + integration + tracing
+pytest                       # 47 tests: unit + integration + tracing
 ```
 
 ## Architecture
@@ -225,10 +225,21 @@ Errors carry a JSON `detail`:
 - **Cost:** every turn stores its prompt and completion tokens and its USD
   cost. Each `X-User-Id` has a daily limit ($1 by default); beyond it, requests
   get 429.
-- **Fallback:** when the main model fails, the client retries with
-  `FALLBACK_MODEL` through an OpenAI-compatible endpoint (Ollama). The
-  integration test checks this: the fake main model returns 500, and the
-  answer comes from the fallback.
+- **Fallback:** when the main model fails (outage, rate limit, bad key or
+  model), the client retries with `FALLBACK_MODEL` through Ollama's
+  OpenAI-compatible endpoint on the host. If half an answer has already
+  streamed, it does not switch, so two models' text never mixes.
+  - **Setup:** see `.env.example`. `qwen2.5:7b` gets a 16k-context variant,
+    because Ollama's default context would cut the 6–8k-token prompts.
+  - **Demonstrated with a real model:** the main model name was set to one
+    that doesn't exist, so OpenAI returned 404 on every call. The whole golden
+    set was then answered by `qwen2.5:7b-16k` on the host GPU, at $0:
+    - accuracy: agent 0.538, pipeline 0.462;
+    - refusals: still 1.0.
+
+    See [EVAL.md](EVAL.md#fallback-model-the-same-set-with-openai-down-measured-nothing-to-keep-or-drop).
+    The integration test also covers the switch, with a fake model that
+    returns 500.
 - **Injection defence:**
   - sources are framed as untrusted data, with a reminder after every source
     block;
@@ -273,14 +284,14 @@ steps run in different threads under the streaming response. Tracing errors
 never fail a request, and without keys tracing is a no-op.
 
 ### Tests
-There are 45 tests, and `pytest` runs them all.
+There are 47 tests, and `pytest` runs them all.
 - **Unit tests** cover the parts whose output depends only on their input:
   - parser helpers: body font, headings, running headers and footers, table
     cleanup;
   - the chunker: page bounds, packing and overlap, table splitting with
     repeated headers;
   - company detection;
-  - citations and the output guard;
+  - citations (including grouped tags such as `[S2, S5]`) and the output guard;
   - the calculator;
   - the agent loop with a scripted fake model: step cap, repeat guard, tool
     errors, push-back.
@@ -303,24 +314,32 @@ checks is in [EVAL.md](EVAL.md).
 
 | | accuracy | refusals | evidence cited | s / question | $ / 16 questions |
 |---|---|---|---|---|---|
-| single-pass (pipeline-v4) | **0.846** | 1.0 | **0.500** | **4.3** | **0.033** |
-| agent (agent-v4) | 0.769 | 1.0 | 0.417 | 7.0 | 0.136 |
+| single-pass (pipeline-v5) | 0.846 | 1.0 | 0.667 | **4.4** | **0.034** |
+| agent (agent-v5) | 0.846 | 1.0 | **0.750** | 6.3 | 0.087 |
+| *fallback only (qwen2.5:7b):* single-pass / agent | 0.462 / 0.538 | 1.0 / 1.0 | 0.333 / 0.500 | 6.5 / 9.7 | 0 |
 
-**Is the agent worth it?** On this set, no:
-- It gets the same quality, within the measured noise of one question, for 4×
-  the cost and 1.6× the time.
-- The questions mostly need one good search, and the pipeline's search is
-  already strong: hybrid, company filter and reranker.
-- gpt-4.1-mini rarely searches twice unless the loop makes it.
+**Is the agent worth it?** Only just, and not on cost:
+- **Accuracy:** the same.
+- **Evidence:** the agent finds the golden page for one more question, which
+  is within the measured one-question noise.
+- **Price:** 2.6× the cost and 1.4× the time, still under one cent per
+  question.
 
-The agent's real wins are questions whose first search misses: q03 and q04
-found their page only on the second search. See [EVAL.md §3](EVAL.md#3-agent-vs-single-pass-pipeline).
+Its real wins are questions whose first search misses:
+- q07: the agent finds the director appointments, while the pipeline says N/A;
+- q03 and q04: the right page came up only on the second search.
+
+The margin grows with a weaker model: with only the fallback, the agent leads
+on both accuracy and evidence. See [EVAL.md §3](EVAL.md#3-agent-vs-single-pass-pipeline).
 
 **Eval-driven changes,** each measured before and after:
 1. The threshold moved from the reranker score to cosine 0.30.
-2. The agent got the push-back on uncited answers: evidence 0.417 → 0.583, for
-   2.4× the cost.
+2. The agent got the push-back on uncited answers.
 3. Prompt-injection defences were added, with no regression on the golden set.
+4. Grouped citation tags such as `[S2, S5]` are now read. This was found while
+   testing the Ollama fallback: evidence went from 0.417 to 0.750 for the
+   agent and from 0.500 to 0.667 for the pipeline, and the agent's cost fell
+   by a third.
 
 Dropped changes: the MiniLM reranker, the reranker-score threshold, and prompt
 examples taken from golden questions (overfitting).
@@ -353,16 +372,17 @@ examples taken from golden questions (overfitting).
 
 ## What doesn't work (known limitations)
 
-- **The agent is not better than the pipeline** on the golden set, just
-  dearer. It often answers without `[S#]` tags; in agent-v4, q07 had the right
-  answer but no citation. After a push-back, some answers mix facts with a
-  final "N/A".
+- **The agent is barely better than the pipeline** on the golden set, and it
+  costs 2.6× more. After a push-back, some answers mix facts with a final
+  "N/A" (q04: "over 2,300 patents … N/A").
 - **Wrong or missed answers** in the latest runs:
   - **q08:** leadership changes at Origin Bancorp. It is missed in both modes.
   - **q11:** HCA dividend policy. The agent says "Yes", but the expected answer
     is "No".
   - **q13:** Seiko Epson dividend. It flips between runs.
   - **q04 and q07:** wrong in the pipeline.
+- **The fallback model is much weaker:** accuracy is about 0.5 against 0.85. It
+  needs a GPU host running Ollama, and it is not bundled in compose.
 - **Prompt injection is only partly defended.** The output guard reliably stops
   image/link exfiltration and system-prompt echoes. But a planted instruction
   can still change the answer itself: a canary, a wrong figure, the language.
@@ -370,10 +390,6 @@ examples taken from golden questions (overfitting).
   company's plant).
 - **The scorer is a string matcher,** so some "correct" answers are wrong and
   some wrong ones are right. EVAL.md lists the ones I checked by hand.
-- **The Ollama fallback was tested only with a fake model** (integration test).
-  It is not demonstrated with a real local model, because Ollama wasn't
-  installed on the dev machine. Set `FALLBACK_MODEL=qwen2.5:7b` and
-  `OLLAMA_URL=http://host.docker.internal:11434/v1` to use it.
 - **No OCR.** These reports all have text layers. Charts and figures are not
   read, and scanned PDFs would produce no chunks.
 - **No migrations.** Tables are created at startup with `create_all`, so a
